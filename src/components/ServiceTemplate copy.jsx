@@ -35,7 +35,7 @@ const services = [
   },
   {
     id: 4,
-    image: Design,
+    image: Project,
     title: "Project|Site",
     subtitle: "Management",
     service: "Project|Site Management",
@@ -55,7 +55,10 @@ const services = [
 
 const ServiceTemplate = () => {
   return services.map((service) => (
-    <div className="grid h-screen grid-cols-12 grid-rows-10" key={service.id}>
+    <div
+      className="sticky top-0 grid h-screen grid-cols-12 grid-rows-10"
+      key={service.id}
+    >
       <div className="col-start-1 col-end-13 row-start-1 row-end-11">
         <div
           className="h-full w-full bg-cover"
