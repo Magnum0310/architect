@@ -13,98 +13,16 @@ import Landscape from "../assets/landscape.jpg";
 import Project from "../assets/project.jpg";
 import Construction from "../assets/construction.jpg";
 
-const services = [
-  {
-    id: 1,
-    image: Design,
-    title: "Architectural",
-    subtitle: "Design",
-    service: "Architectural Design",
-    description:
-      "Meet our visionary architects, who tirelessly work to bring yourvision to life. With expertise, attention to detail, and dedication to innovation, each member of our team brings a unique perspective to every project. From concept to completion, we collaborate closely with you to ensure that your space is a true reflection of your style and personality.",
-  },
-  {
-    id: 2,
-    image: Interior,
-    title: "Architectural",
-    subtitle: "Interiors",
-    service: "Architectural Interiors",
-    description:
-      "Meet our creative interior designers, who bring warmth, style, and functionality to every space. With an eye for detail and a passion for design, they transform interiors into inviting and inspiring environments. Whether it's a residential project or a commercial space, we'll create interiors that enhance your lifestyle and leave a lasting impression.",
-  },
-  {
-    id: 3,
-    image: Landscape,
-    title: "Landscape",
-    subtitle: "Design",
-    service: "Landscape Design",
-    description:
-      "Enrich your outdoor spaces with our expert landscape design services. Our landscape architects blend artistry with environmental consciousness to create outdoor environments that seamlessly integrate with their surroundings. Whether it's a serene garden retreat or a dynamic outdoor entertainment area, we'll design landscapes that captivate the senses and elevate your lifestyle.",
-  },
-  {
-    id: 4,
-    image: Project,
-    title: "Project|Site",
-    subtitle: "Management",
-    service: "Project|Site Management",
-    description:
-      "Let us handle the complexities of project management, ensuring smooth coordination and timely execution. Led by a seasoned architect, our team ensures smooth coordination and timely execution. With their expertise at the helm, your project is in capable hands from start to finish.",
-  },
-  {
-    id: 5,
-    image: Construction,
-    title: "Construction",
-    subtitle: "",
-    service: "Construction",
-    description:
-      "Experience craftsmanship at its finest with our skilled construction team. From groundbreaking to finishing touches, we bring designs to life with meticulous attention to detail and a commitment to excellence. With a focus on quality and durability, we ensure that your project is not only visually stunning but also built to withstand the test of time.",
-  },
-];
-
 const ServicesPage = ({ track }) => {
   const element = useRef(null);
 
   const { scrollYProgress } = useScroll({
     target: track,
-    offset: [".6 .5", "1 .5"],
-    // offset: ["start center", "end center"],
+    offset: [".6 .5", ".9 .5"],
   });
 
-  // const yOpacity = useTransform(scrollYProgress, [0.7, 0.8], [0, 1], {
-  //   ease: easeInOut,
-  // });
-  // const yTitle = useTransform(scrollYProgress, [0.7, 0.75], [100, 0], {
-  //   ease: easeInOut,
-  // });
-  // const yDescription = useTransform(scrollYProgress, [0.7, 0.76], [60, 0], {
-  //   ease: easeInOut,
-  // });
-  // const imageScale = useTransform(scrollYProgress, [0.2, 0.5], [0.3, 1], {
-  //   ease: easeInOut,
-  // });
-  // const imageScroll = useTransform(
-  //   scrollYProgress,
-  //   [0, 0.9, 6, 10],
-  //   [0, 0, -1000, -2000],
-  // );
-  // // Highlight and Shapes
-  // const shapeOpacity = useTransform(scrollYProgress, [0.7, 0.8], [0, 0.45], {
-  //   ease: easeInOut,
-  // });
-  // const hightLightOpacity = useTransform(scrollYProgress, [0.7, 0.8], [0, 1], {
-  //   ease: easeInOut,
-  // });
-  // const topHighlight = useTransform(scrollYProgress, [0.7, 0.8], [-100, 0], {
-  //   ease: easeInOut,
-  // });
-  // const bottomHighlight = useTransform(scrollYProgress, [0.7, 0.8], [-100, 0], {
-  //   ease: easeInOut,
-  // });
-
-  // const trackerStart = 0.65;
-  // const trackerEnd = 0.7;
-  const trackerStart = 0.315;
-  const trackerEnd = 0.355;
+  const trackerStart = 0.365;
+  const trackerEnd = 0.455;
 
   const yOpacity = useTransform(
     scrollYProgress,
@@ -116,59 +34,60 @@ const ServicesPage = ({ track }) => {
   );
   const yTitle = useTransform(
     scrollYProgress,
-    [trackerStart, trackerEnd],
-    [100, 0],
+    [trackerStart, trackerEnd, 0.8, 1],
+    [100, 0, 0, -60],
     {
       ease: easeInOut,
     },
   );
   const yDescription = useTransform(
     scrollYProgress,
-    [trackerStart, trackerEnd],
-    [60, 0],
+    [trackerStart, trackerEnd, 0.8, 1],
+    [60, 0, 0, 60],
     {
       ease: easeInOut,
     },
   );
-  const imageScale = useTransform(scrollYProgress, [1, 1], [0.3, 1], {
+  const imageScale = useTransform(
+    scrollYProgress,
+    [1, 1, 0.85],
+    [0.3, 0.3, 1],
+    {
+      ease: easeInOut,
+    },
+  );
+  const backgroundScale = useTransform(scrollYProgress, [1, 0.9], [1, 1], {
     ease: easeInOut,
   });
-  const imageScroll = useTransform(
-    scrollYProgress,
-    [0, 0.65, 0.81],
-    // [0, 1.1, 1.3],
-    [0, 0, -1000],
-    { ease: easeInOut },
-  );
   // Highlight and Shapes
   const shapeOpacity = useTransform(
     scrollYProgress,
-    [trackerStart, trackerEnd],
-    [0, 0.45],
+    [trackerStart, trackerEnd, 0.8, 1],
+    [0, 0.45, 0.45, 0],
     {
       ease: easeInOut,
     },
   );
   const hightLightOpacity = useTransform(
     scrollYProgress,
-    [trackerStart, trackerEnd],
-    [0, 1],
+    [trackerStart, trackerEnd, 0.8, 1],
+    [0, 1, 1, 0],
     {
       ease: easeInOut,
     },
   );
   const topHighlight = useTransform(
     scrollYProgress,
-    [trackerStart, trackerEnd],
-    [-100, 0],
+    [trackerStart, trackerEnd, 0.8, 1],
+    [-100, 0, 0, -100],
     {
       ease: easeInOut,
     },
   );
   const bottomHighlight = useTransform(
     scrollYProgress,
-    [trackerStart, trackerEnd],
-    [-100, 0],
+    [trackerStart, trackerEnd, 0.8, 1],
+    [-100, 0, 0, -100],
     {
       ease: easeInOut,
     },
@@ -183,10 +102,18 @@ const ServicesPage = ({ track }) => {
               className="h-[100vh] w-full bg-cover"
               style={{
                 backgroundImage: `url(${Construction})`,
-                // y: imageScroll,
+                scale: imageScale,
+              }}
+            />
+            <motion.div
+              className="absolute top-0 -z-10 h-full w-full "
+              style={{
+                backgroundColor: "#171C22",
+                scale: backgroundScale,
               }}
             />
           </motion.div>
+
           {/* WRAPPER */}
           <div className="col-start-4 col-end-11 row-start-3 row-end-10">
             <div className="relative grid h-full grid-cols-7 grid-rows-7 ">
