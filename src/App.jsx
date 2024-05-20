@@ -3,14 +3,14 @@ import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import About from "./components/AboutUs";
 import Services from "./components/Services";
-import Design111 from "./components/Design111";
-import Interior111 from "./components/Interior111";
-import Trial from "./components/Trial";
 import Design from "./components/Design";
 import Interior from "./components/Interior";
 import Landscape from "./components/Landscape";
 import Project from "./components/Project";
 import Construction from "./components/Construction";
+import OtherServices from "./components/Other Services";
+import Carousel from "./components/Carousel";
+import Permit from "./components/Permit";
 
 import "./App.css";
 import Lenis from "lenis";
@@ -20,10 +20,7 @@ function App() {
   const track = useRef(null);
   const track1 = useRef(null);
   const track2 = useRef(null);
-  // const { scrollYProgress } = useScroll({
-  //   target: track,
-  //   offset: ["start start", "end end"],
-  // });
+
   useEffect(() => {
     const lenis = new Lenis();
 
@@ -46,12 +43,9 @@ function App() {
       <div>
         <About />
       </div>
-      <div className="h-[90%]">
+      <div className="h-screen">
         <Services />
       </div>
-      {/* <div className="h-[200vh]">
-        <Design />
-      </div> */}
       <div className="min-h-[1300vh]" ref={track}>
         <div className="sticky top-0 min-h-[300vh]">
           <Design track={track} />
@@ -59,7 +53,6 @@ function App() {
         <div className="sticky top-0 min-h-[200vh] ">
           <Interior track={track} />
         </div>
-        {/* <div className="relative mb-[32rem] bg-red-500">SPACER</div> */}
         <div className="sticky top-0 min-h-[200vh] ">
           <Landscape track={track} />
         </div>
@@ -70,8 +63,16 @@ function App() {
           <Construction track={track} />
         </div>
       </div>
-      <div className="h-[90%]">
-        <Services />
+      <div className="h-screen">
+        <OtherServices />
+      </div>
+      {/* <div className="min-h-[200vh]" ref={track1}>
+        <div className="sticky top-0 min-h-[100vh]">
+          <Permit track={track1} />
+        </div>
+      </div> */}
+      <div className="text-white">
+        <Carousel />
       </div>
     </div>
   );

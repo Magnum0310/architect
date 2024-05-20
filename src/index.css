@@ -13,6 +13,9 @@
   .text-title {
     @apply text-8xl;
   }
+  .text-other {
+    @apply text-9xl;
+  }
   .text-subtitle {
     @apply text-6xl;
   }

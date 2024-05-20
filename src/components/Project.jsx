@@ -67,7 +67,6 @@ const ServicesPage = ({ track }) => {
   const { scrollYProgress } = useScroll({
     target: track,
     offset: [".4 .5", "1 .5"],
-    // offset: ["start center", "end center"],
   });
 
   // const yOpacity = useTransform(scrollYProgress, [0.7, 0.8], [0, 1], {
@@ -103,8 +102,8 @@ const ServicesPage = ({ track }) => {
 
   // const trackerStart = 0.65;
   // const trackerEnd = 0.7;
-  const trackerStart = 0.265;
-  const trackerEnd = 0.315;
+  const trackerStart = 0.26;
+  const trackerEnd = 0.3;
 
   const yOpacity = useTransform(
     scrollYProgress,
@@ -136,7 +135,6 @@ const ServicesPage = ({ track }) => {
   const imageScroll = useTransform(
     scrollYProgress,
     [0, 0.45, 0.7],
-    // [0, 0.7, 0.9],
     [0, 0, -1000],
     { ease: easeInOut },
   );
@@ -213,7 +211,7 @@ const ServicesPage = ({ track }) => {
                 className="text-subtitle-description-color text-service-description  z-10 col-start-1 col-end-4 row-start-4 row-end-5 flex  justify-center font-Fahkwang"
                 style={{ y: yDescription, opacity: yOpacity }}
               >
-                <span>Project|Site Management</span>
+                <span>Project | Site Management</span>
               </motion.div>
               {/* SERVICE DESCRIPTION */}
               <motion.div
