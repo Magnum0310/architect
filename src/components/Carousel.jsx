@@ -1,22 +1,74 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Permit from "../assets/buildingPermits.jpg";
 import Stainless from "../assets/stainless.jpg";
 import Aluminum from "../assets/aluminum.jpg";
 import Furniture from "../assets/furniture.jpg";
 import Window from "../assets/window.jpg";
-import { motion } from "framer-motion";
+import { motion, useInView, useScroll } from "framer-motion";
+import leftArrow from "../assets/leftArrow.svg";
+import rightArrow from "../assets/rightArrow.svg";
+import hiddenLeft from "../assets/hiddenLeftArrow.svg";
+import hiddenRight from "../assets/hiddenRightArrow.svg";
 
 const images = [
-  { image: Permit, title: "Building Permit", subTitle: "Documents" },
-  { image: Stainless, title: "Stainless", subTitle: "Works" },
-  { image: Aluminum, title: "Aluminum", subTitle: "Works" },
-  { image: Furniture, title: "Furniture" },
-  { image: Window, title: "Window", subTitle: "Blinds" },
+  { id: 1, image: Permit, title: "Building Permit", subTitle: "Documents" },
+  { id: 2, image: Stainless, title: "Stainless", subTitle: "Works" },
+  { id: 3, image: Aluminum, title: "Aluminum", subTitle: "Works" },
+  { id: 4, image: Furniture, title: "Furniture" },
+  { id: 5, image: Window, title: "Window Blinds" },
 ];
+
+const primaryVariant = {
+  initial: { opacity: 1 },
+  animate: {
+    opacity: 1,
+    transition: {
+      type: "tween",
+      delayChildren: 0.4,
+      staggerChildren: 0.1,
+      ease: "easeInOut",
+    },
+  },
+};
+const secondaryVariant = {
+  initial: { opacity: 1 },
+  animate: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.5,
+      staggerChildren: 0.3,
+      ease: "circOut",
+      type: "tween",
+    },
+  },
+};
+
+const shapeVariant = {
+  initial: {
+    width: "100%",
+  },
+  animate: {
+    width: "0%",
+  },
+};
+
+const titleVariant = {
+  initial: { x: -100, opacity: 0 },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      ease: "circOut",
+      type: "tween",
+    },
+  },
+};
 
 const Carousel = () => {
   const [imgIndex, setImgIndex] = useState(0);
+  const track = useRef(null);
 
+  const isInView = useInView(track);
   const next = () => {
     if (imgIndex >= 0 && imgIndex <= 3) {
       setImgIndex((prev) => prev + 1);
@@ -36,62 +88,112 @@ const Carousel = () => {
     damping: 50,
   };
 
-  console.log(imgIndex);
+  console.log(images.id);
 
   return (
-    <div className="relative flex h-screen w-full overflow-hidden">
-      <button
+    <div className="relative flex h-screen w-full overflow-hidden" ref={track}>
+      <motion.button
         onClick={next}
-        className="absolute bottom-1/2 left-auto right-0 top-auto z-10 h-20 w-32 border-4 border-solid border-violet-500 font-bold text-white"
-      >
-        NEXT
-      </button>
-      <button
+        disabled={imgIndex == 4 ? true : false}
+        className={`absolute bottom-1/2 left-auto right-0 top-auto z-10 mr-10 h-20 min-w-16 font-bold text-white ${imgIndex == 4 ? "opacity-45" : "opacity-1 "}`}
+        style={{
+          backgroundImage: `url(${rightArrow})`,
+          backgroundSize: "contain",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+        whileTap={{ scale: 0.8 }}
+      ></motion.button>
+      <motion.button
         onClick={prev}
-        className="absolute bottom-1/2 left-0 right-auto top-auto z-10 h-20 w-32 border-4 border-solid border-violet-500 font-bold text-white"
-      >
-        PREV
-      </button>
+        disabled={imgIndex == 0 ? true : false}
+        className={`absolute bottom-1/2 left-0 right-auto top-auto z-10 ml-10 h-20 min-w-16 font-bold text-white ${imgIndex == 0 ? "opacity-45" : "opacity-1"}`}
+        style={{
+          backgroundImage: `url(${leftArrow})`,
+          backgroundSize: "contain",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+        whileTap={{ scale: 0.8 }}
+      ></motion.button>
       {images.map((image, index) => (
-        <motion.div
-          className="grid aspect-video w-screen shrink-0 grid-cols-12 grid-rows-10 bg-primaryBackground "
-          animate={{ translateX: x }}
-          transition={TWEEN_OPTIONS}
-        >
-          <motion.div
-            key={index}
-            className="col-start-4 col-end-12 row-start-3 row-end-10  shrink-0"
-            style={{
-              backgroundImage: `url(${image.image})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          ></motion.div>
-          {/* GRAY RECTANGLE */}
-          <motion.div className="relative col-start-2 col-end-7 row-start-5 row-end-9  ">
-            <div className="grid h-full grid-cols-7 grid-rows-6 border-2 border-solid border-goldLines bg-primaryBackground bg-opacity-45">
-              <div className="absolute flex h-full w-full flex-col justify-center">
-                <motion.div className="text-title relative z-10  ml-10 flex items-center">
-                  <span className="text-title-color">{image.title}</span>
+        <>
+          {isInView ? (
+            <motion.div
+              key={index}
+              ref={track}
+              className="grid aspect-video w-screen shrink-0 grid-cols-12 grid-rows-10 bg-primaryBackground"
+              transition={TWEEN_OPTIONS}
+              animate={{ translateX: x }}
+            >
+              <motion.div
+                className="col-start-4 col-end-12 row-start-3 row-end-10 shrink-0"
+                style={{
+                  backgroundImage: `url(${image.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                {/* IMAGES */}
+                <motion.div
+                  className="grid h-full w-full grid-cols-8 grid-rows-2"
+                  variants={primaryVariant}
+                  animate={imgIndex + 1 == image.id ? "animate" : ""}
+                  initial="initial"
+                >
+                  {/* SHAPE VARIANTS */}
+                  <motion.div
+                    className="col-start-7 col-end-9 row-start-1 row-end-3 bg-primaryBackground"
+                    variants={shapeVariant}
+                  ></motion.div>
+                  <motion.div
+                    className="col-start-5 col-end-7 row-start-1 row-end-3 bg-primaryBackground"
+                    variants={shapeVariant}
+                  ></motion.div>
+                  <motion.div
+                    className="col-start-3 col-end-5 row-start-1 row-end-3 bg-primaryBackground"
+                    variants={shapeVariant}
+                  ></motion.div>
+
+                  <motion.div
+                    className="col-start-1 col-end-3 row-start-1 row-end-3  bg-primaryBackground"
+                    variants={shapeVariant}
+                  ></motion.div>
                 </motion.div>
-                <motion.div className="text-title relative z-10  ml-10 flex items-center">
-                  <span className="text-title-color">{image.subTitle}</span>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-          {/* <motion.div className="relative col-start-7 col-end-12 row-start-3 row-end-10 m-10 ">
-            <div className="grid h-full grid-cols-7 grid-rows-6 ">
-              <motion.div className="text-title relative z-10 col-start-1 col-end-8 row-start-2 row-end-4 ml-10 flex items-center">
-                <span className="text-title-color">{image.title}</span>
               </motion.div>
-              <motion.div className="text-title relative z-10 col-start-1 col-end-4 row-start-4 row-end-6 ml-10 flex items-center">
-                <span className="text-title-color">{image.subTitle}</span>
+
+              {/* GRAY RECTANGLE */}
+              <motion.div
+                className="relative col-start-2 col-end-7 row-start-5 row-end-9"
+                variants={secondaryVariant}
+                animate={imgIndex + 1 == image.id ? "animate" : ""}
+                initial="initial"
+              >
+                <div className="grid h-full grid-cols-7 grid-rows-6 border-2 border-solid border-goldLines bg-primaryBackground bg-opacity-45">
+                  <div className="absolute flex h-full w-full flex-col justify-center">
+                    <motion.div
+                      className="text-title relative z-10  ml-10 flex items-center"
+                      // style={{ x: -500 }}
+                      variants={titleVariant}
+                    >
+                      <span className="text-title-color">{image.title}</span>
+                    </motion.div>
+                    <motion.div
+                      className="text-title relative z-10  ml-10 flex items-center"
+                      // style={{ x: -500 }}
+                      variants={titleVariant}
+                    >
+                      <span className="text-title-color">{image.subTitle}</span>
+                    </motion.div>
+                  </div>
+                </div>
               </motion.div>
-              <div className="col-start-1 col-end-9 row-start-1 row-end-7 grid h-full bg-primaryBackground opacity-45"></div>
-            </div>
-          </motion.div> */}
-        </motion.div>
+              {/* <div className="z-10 col-start-1 col-end-2 row-start-1 row-end-11 border-r-4 border-goldLines"></div> */}
+            </motion.div>
+          ) : (
+            <></>
+          )}
+        </>
       ))}
     </div>
   );
