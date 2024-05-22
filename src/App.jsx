@@ -11,6 +11,7 @@ import Construction from "./components/Construction";
 import OtherServices from "./components/Other Services";
 import Carousel from "./components/Carousel";
 import Permit from "./components/Permit";
+import Contact from "./components/ContactUs";
 
 import "./App.css";
 import Lenis from "lenis";
@@ -66,13 +67,11 @@ function App() {
       <div className="h-screen">
         <OtherServices />
       </div>
-      {/* <div className="min-h-[200vh]" ref={track1}>
-        <div className="sticky top-0 min-h-[100vh]">
-          <Permit track={track1} />
-        </div>
-      </div> */}
-      <div className="text-white">
+      <div className="h-[200vh] text-white">
         <Carousel />
+      </div>
+      <div className="h-screen text-white">
+        <Contact />
       </div>
     </div>
   );

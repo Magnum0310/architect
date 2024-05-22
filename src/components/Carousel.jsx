@@ -7,8 +7,6 @@ import Window from "../assets/window.jpg";
 import { motion, useInView, useScroll } from "framer-motion";
 import leftArrow from "../assets/leftArrow.svg";
 import rightArrow from "../assets/rightArrow.svg";
-import hiddenLeft from "../assets/hiddenLeftArrow.svg";
-import hiddenRight from "../assets/hiddenRightArrow.svg";
 
 const images = [
   { id: 1, image: Permit, title: "Building Permit", subTitle: "Documents" },
@@ -45,10 +43,10 @@ const secondaryVariant = {
 
 const shapeVariant = {
   initial: {
-    width: "100%",
+    scaleX: 1,
   },
   animate: {
-    width: "0%",
+    scaleX: 0,
   },
 };
 
@@ -88,10 +86,11 @@ const Carousel = () => {
     damping: 50,
   };
 
-  console.log(images.id);
-
   return (
-    <div className="relative flex h-screen w-full overflow-hidden" ref={track}>
+    <div
+      className=" sticky top-0 flex h-screen w-full overflow-hidden"
+      ref={track}
+    >
       <motion.button
         onClick={next}
         disabled={imgIndex == 4 ? true : false}
@@ -143,21 +142,25 @@ const Carousel = () => {
                 >
                   {/* SHAPE VARIANTS */}
                   <motion.div
-                    className="col-start-7 col-end-9 row-start-1 row-end-3 bg-primaryBackground"
+                    className="col-start-1 col-end-3 row-start-1 row-end-3 bg-primaryBackground"
                     variants={shapeVariant}
+                    style={{ originX: 1 }}
+                  ></motion.div>
+                  <motion.div
+                    className="col-start-3 col-end-5 row-start-1 row-end-3  bg-primaryBackground"
+                    variants={shapeVariant}
+                    style={{ originX: 1 }}
                   ></motion.div>
                   <motion.div
                     className="col-start-5 col-end-7 row-start-1 row-end-3 bg-primaryBackground"
                     variants={shapeVariant}
-                  ></motion.div>
-                  <motion.div
-                    className="col-start-3 col-end-5 row-start-1 row-end-3 bg-primaryBackground"
-                    variants={shapeVariant}
+                    style={{ originX: 1 }}
                   ></motion.div>
 
                   <motion.div
-                    className="col-start-1 col-end-3 row-start-1 row-end-3  bg-primaryBackground"
+                    className="col-start-7 col-end-9 row-start-1 row-end-3  bg-primaryBackground"
                     variants={shapeVariant}
+                    style={{ originX: 1 }}
                   ></motion.div>
                 </motion.div>
               </motion.div>
@@ -173,14 +176,12 @@ const Carousel = () => {
                   <div className="absolute flex h-full w-full flex-col justify-center">
                     <motion.div
                       className="text-title relative z-10  ml-10 flex items-center"
-                      // style={{ x: -500 }}
                       variants={titleVariant}
                     >
                       <span className="text-title-color">{image.title}</span>
                     </motion.div>
                     <motion.div
                       className="text-title relative z-10  ml-10 flex items-center"
-                      // style={{ x: -500 }}
                       variants={titleVariant}
                     >
                       <span className="text-title-color">{image.subTitle}</span>

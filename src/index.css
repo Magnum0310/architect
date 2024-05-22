@@ -38,6 +38,9 @@
   .text-page-title-color {
     @apply text-white;
   }
+  .text-contact-opacity {
+    @apply opacity-60;
+  }
 
   /* BORDER */
   .border-draft {
