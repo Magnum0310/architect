@@ -16,7 +16,6 @@ import Construction from "../assets/construction.jpg";
 
 const ServicesPage = ({ track }) => {
   const element = useRef(null);
-
   const { scrollYProgress } = useScroll({
     target: track,
     offset: ["start center", "end center"],
@@ -89,6 +88,9 @@ const ServicesPage = ({ track }) => {
     },
   );
 
+  const isInView = useInView(element, { margin: "-50% 0% -50% 50%" });
+
+  console.log(isInView);
   return (
     <>
       <div className="mb-96">
@@ -148,6 +150,7 @@ const ServicesPage = ({ track }) => {
               {/* HIGHTLIGHTS */}
               <motion.div
                 className="relative left-1/2 right-1/2 col-start-7 col-end-8 row-start-4 row-end-8 w-[.5rem] bg-goldLines"
+                ref={element}
                 style={{ opacity: hightLightOpacity, y: topHighlight }}
               ></motion.div>
               <motion.div

@@ -5,6 +5,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @tailwind base;
+html {
+  scroll-behavior: smooth;
+} */
+
 @layer utilities {
   .padding-title {
     @apply px-8 sm:px-14;

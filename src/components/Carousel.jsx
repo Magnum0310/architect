@@ -7,12 +7,13 @@ import Window from "../assets/window.jpg";
 import { motion, useInView, useScroll } from "framer-motion";
 import leftArrow from "../assets/leftArrow.svg";
 import rightArrow from "../assets/rightArrow.svg";
+import PageTracker from "./PageTracker";
 
 const images = [
   { id: 1, image: Permit, title: "Building Permit", subTitle: "Documents" },
   { id: 2, image: Stainless, title: "Stainless", subTitle: "Works" },
   { id: 3, image: Aluminum, title: "Aluminum", subTitle: "Works" },
-  { id: 4, image: Furniture, title: "Furniture" },
+  { id: 4, image: Furniture, title: "Furnitures" },
   { id: 5, image: Window, title: "Window Blinds" },
 ];
 
@@ -66,7 +67,7 @@ const Carousel = () => {
   const [imgIndex, setImgIndex] = useState(0);
   const track = useRef(null);
 
-  const isInView = useInView(track);
+  const isInView = useInView(track, { once: true, margin: "-100px 0px" });
   const next = () => {
     if (imgIndex >= 0 && imgIndex <= 3) {
       setImgIndex((prev) => prev + 1);
@@ -88,9 +89,30 @@ const Carousel = () => {
 
   return (
     <div
-      className=" sticky top-0 flex h-screen w-full overflow-hidden"
+      className=" sticky top-0 flex h-screen w-full overflow-hidden "
       ref={track}
     >
+      {/* PAGE NUMBER */}
+      {isInView ? (
+        <motion.div
+          className={`absolute  top-14 z-10 h-[20vh] w-full `}
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.5, ease: "easeInOut" }}
+        >
+          <PageTracker page={imgIndex + 1} />
+        </motion.div>
+      ) : (
+        <></>
+      )}
+      {/* <motion.div
+        className={`absolute  top-14 z-10 h-[20vh] w-full `}
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.5, ease: "easeInOut" }}
+      >
+        <PageTracker page={imgIndex + 1} />
+      </motion.div> */}
       <motion.button
         onClick={next}
         disabled={imgIndex == 4 ? true : false}
