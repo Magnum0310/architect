@@ -96,21 +96,35 @@ const ServicesPage = ({ track }) => {
 
   return (
     <>
-      <div className="">
+      <div className=" bg-red-500">
         <motion.div className="grid grid-cols-12 grid-rows-10">
           <motion.div className="col-start-1 col-end-13 row-start-1 row-end-11 ">
             <motion.div
-              className="h-[100vh] w-full bg-cover"
+              className="h-[100vh] w-full bg-cover max-md:hidden"
               style={{
                 backgroundImage: `url(${Construction})`,
                 scale: imageScale,
               }}
             />
             <motion.div
-              className="absolute top-0 -z-10 h-full w-full "
+              className="absolute top-0 -z-10 h-full w-full max-md:hidden"
               style={{
                 backgroundColor: "#171C22",
                 scale: backgroundScale,
+              }}
+            />
+            <motion.div
+              className="h-[100vh] w-full bg-cover md:hidden"
+              style={{
+                backgroundImage: `url(${Construction})`,
+                scale: 1,
+              }}
+            />
+            <motion.div
+              className="absolute top-0 -z-10 h-full w-full md:hidden"
+              style={{
+                backgroundColor: "#171C22",
+                scale: 1,
               }}
             />
           </motion.div>

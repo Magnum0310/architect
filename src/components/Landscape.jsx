@@ -70,39 +70,6 @@ const ServicesPage = ({ track }) => {
     offset: [".2 .5", "1 .5"],
   });
 
-  // const yOpacity = useTransform(scrollYProgress, [0.7, 0.8], [0, 1], {
-  //   ease: easeInOut,
-  // });
-  // const yTitle = useTransform(scrollYProgress, [0.7, 0.75], [100, 0], {
-  //   ease: easeInOut,
-  // });
-  // const yDescription = useTransform(scrollYProgress, [0.7, 0.76], [60, 0], {
-  //   ease: easeInOut,
-  // });
-  // const imageScale = useTransform(scrollYProgress, [0.2, 0.5], [0.3, 1], {
-  //   ease: easeInOut,
-  // });
-  // const imageScroll = useTransform(
-  //   scrollYProgress,
-  //   [0, 0.9, 6, 10],
-  //   [0, 0, -1000, -2000],
-  // );
-  // // Highlight and Shapes
-  // const shapeOpacity = useTransform(scrollYProgress, [0.7, 0.8], [0, 0.45], {
-  //   ease: easeInOut,
-  // });
-  // const hightLightOpacity = useTransform(scrollYProgress, [0.7, 0.8], [0, 1], {
-  //   ease: easeInOut,
-  // });
-  // const topHighlight = useTransform(scrollYProgress, [0.7, 0.8], [-100, 0], {
-  //   ease: easeInOut,
-  // });
-  // const bottomHighlight = useTransform(scrollYProgress, [0.7, 0.8], [-100, 0], {
-  //   ease: easeInOut,
-  // });
-
-  // const trackerStart = 0.65;
-  // const trackerEnd = 0.7;
   const trackerStart = 0.24;
   const trackerEnd = 0.28;
 
@@ -180,10 +147,17 @@ const ServicesPage = ({ track }) => {
         <motion.div className="grid grid-cols-12 grid-rows-10">
           <motion.div className="col-start-1 col-end-13 row-start-1 row-end-11 ">
             <motion.div
-              className="h-[100vh] w-full bg-cover"
+              className="h-[100vh] w-full bg-cover max-md:hidden"
               style={{
                 backgroundImage: `url(${Landscape})`,
                 y: imageScroll,
+              }}
+            />
+            <motion.div
+              className="h-[100vh] w-full bg-cover md:hidden"
+              style={{
+                backgroundImage: `url(${Landscape})`,
+                y: 0,
               }}
             />
           </motion.div>
