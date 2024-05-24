@@ -211,7 +211,7 @@ const ServicesPage = ({ track }) => {
               </motion.div>
               {/* SERVICE SUBTITLE */}
               <motion.div
-                className="text-subtitle-description-color text-service-description z-10 col-start-1  col-end-4 row-start-4 row-end-5 flex hidden   justify-center font-Fahkwang"
+                className="text-subtitle-description-color text-service-description z-10 col-start-1  col-end-4 row-start-4 row-end-5 flex    justify-center font-Fahkwang"
                 style={{ y: yDescription, opacity: yDescriptionOpacity }}
               >
                 <span>Building Permit Documents</span>

@@ -105,14 +105,6 @@ const Carousel = () => {
       ) : (
         <></>
       )}
-      {/* <motion.div
-        className={`absolute  top-14 z-10 h-[20vh] w-full `}
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.5, ease: "easeInOut" }}
-      >
-        <PageTracker page={imgIndex + 1} />
-      </motion.div> */}
       <motion.button
         onClick={next}
         disabled={imgIndex == 4 ? true : false}
@@ -138,10 +130,9 @@ const Carousel = () => {
         whileTap={{ scale: 0.8 }}
       ></motion.button>
       {images.map((image, index) => (
-        <>
+        <div key={index}>
           {isInView ? (
             <motion.div
-              key={index}
               ref={track}
               className="grid aspect-video w-screen shrink-0 grid-cols-12 grid-rows-10 bg-primaryBackground"
               transition={TWEEN_OPTIONS}
@@ -216,7 +207,7 @@ const Carousel = () => {
           ) : (
             <></>
           )}
-        </>
+        </div>
       ))}
     </div>
   );

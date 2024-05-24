@@ -72,7 +72,6 @@ const textVariant = {
   animate: {
     x: 0,
     transition: {
-      duration: 0.5,
       type: "tween",
       ease: "anticipate",
       duration: 1,

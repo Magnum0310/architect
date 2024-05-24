@@ -66,6 +66,7 @@ const ServicesPage = ({ track }) => {
 
   const { scrollYProgress } = useScroll({
     target: track,
+    layoutEffect: false,
     offset: [".4 .5", "1 .5"],
   });
 
