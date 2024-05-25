@@ -1,20 +1,38 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import Permit from "../assets/buildingPermits.jpg";
 import Stainless from "../assets/stainless.jpg";
 import Aluminum from "../assets/aluminum.jpg";
 import Furniture from "../assets/furniture.jpg";
 import Window from "../assets/window.jpg";
-import { motion, useInView, useScroll } from "framer-motion";
+import { motion, useInView, useScroll, useMotionValue } from "framer-motion";
 import leftArrow from "../assets/leftArrow.svg";
 import rightArrow from "../assets/rightArrow.svg";
 import PageTracker from "./PageTracker";
 
 const images = [
-  { id: 1, image: Permit, title: "Building Permit", subTitle: "Documents" },
-  { id: 2, image: Stainless, title: "Stainless", subTitle: "Works" },
-  { id: 3, image: Aluminum, title: "Aluminum", subTitle: "Works" },
-  { id: 4, image: Furniture, title: "Furnitures" },
-  { id: 5, image: Window, title: "Window Blinds" },
+  {
+    id: 1,
+    image: Permit,
+    title: "Building Permit",
+    subTitle: "Documents",
+    full: "Building Permit Documents",
+  },
+  {
+    id: 2,
+    image: Stainless,
+    title: "Stainless",
+    subTitle: "Works",
+    full: "Stainless Works",
+  },
+  {
+    id: 3,
+    image: Aluminum,
+    title: "Aluminum",
+    subTitle: "Works",
+    full: "Aluminum Works",
+  },
+  { id: 4, image: Furniture, title: "Furnitures", full: "Furnitures" },
+  { id: 5, image: Window, title: "Window Blinds", full: "WIndow Blinds" },
 ];
 
 const primaryVariant = {
@@ -68,18 +86,20 @@ const Carousel = () => {
   const track = useRef(null);
 
   const isInView = useInView(track, { once: true, margin: "-100px 0px" });
+
+  // NEXT BUTTON
   const next = () => {
     if (imgIndex >= 0 && imgIndex <= 3) {
       setImgIndex((prev) => prev + 1);
     } else return;
   };
-
+  // PRE BUTTON
   const prev = () => {
     if (imgIndex <= 4 && imgIndex >= 1) setImgIndex((prev) => prev - 1);
   };
-
+  // X VALUE
   const x = `${imgIndex * -100}%`;
-
+  // TWEEN OPTION
   const TWEEN_OPTIONS = {
     type: "spring",
     mass: 3,
@@ -87,51 +107,69 @@ const Carousel = () => {
     damping: 50,
   };
 
+  // SWIPE CONFIGS
+  const DRAG_BUFFER = 50;
+  const dragX = useMotionValue(0);
+  const onDragEnd = () => {
+    const x = dragX.get();
+
+    if (x <= -DRAG_BUFFER && imgIndex < images.length - 1) {
+      setImgIndex((pv) => pv + 1);
+    } else if (x >= DRAG_BUFFER && imgIndex > 0) {
+      setImgIndex((pv) => pv - 1);
+    }
+  };
+
   return (
-    <div
-      className=" sticky top-0 flex h-screen w-full overflow-hidden "
-      ref={track}
-    >
-      {/* PAGE NUMBER */}
-      {isInView ? (
-        <motion.div
-          className={`absolute  top-14 z-10 h-[20vh] w-full `}
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.5, ease: "easeInOut" }}
-        >
-          <PageTracker page={imgIndex + 1} />
-        </motion.div>
-      ) : (
-        <></>
-      )}
-      <motion.button
-        onClick={next}
-        disabled={imgIndex == 4 ? true : false}
-        className={`absolute bottom-1/2 left-auto right-0 top-auto z-10 mr-10 h-20 min-w-16 font-bold text-white ${imgIndex == 4 ? "opacity-45" : "opacity-1 "}`}
-        style={{
-          backgroundImage: `url(${rightArrow})`,
-          backgroundSize: "contain",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-        whileTap={{ scale: 0.8 }}
-      ></motion.button>
-      <motion.button
-        onClick={prev}
-        disabled={imgIndex == 0 ? true : false}
-        className={`absolute bottom-1/2 left-0 right-auto top-auto z-10 ml-10 h-20 min-w-16 font-bold text-white ${imgIndex == 0 ? "opacity-45" : "opacity-1"}`}
-        style={{
-          backgroundImage: `url(${leftArrow})`,
-          backgroundSize: "contain",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-        whileTap={{ scale: 0.8 }}
-      ></motion.button>
-      {images.map((image, index) => (
-        <div key={index}>
-          {isInView ? (
+    <>
+      {/* TABLET */}
+      <div
+        className="sticky top-0 flex h-screen w-full overflow-hidden max-md:hidden "
+        ref={track}
+      >
+        {/* PAGE NUMBER */}
+        {isInView ? (
+          <motion.div
+            className={`absolute top-14 z-10 h-[20vh] w-full `}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.5, ease: "easeInOut" }}
+          >
+            <PageTracker page={imgIndex + 1} />
+          </motion.div>
+        ) : (
+          <></>
+        )}
+        {/* BUTTON RIGHT */}
+        <motion.button
+          onClick={next}
+          disabled={imgIndex == 4 ? true : false}
+          className={`absolute bottom-1/2 left-auto right-0 top-auto z-10 mr-10 h-20 min-w-16 font-bold text-white ${imgIndex == 4 ? "opacity-45" : "opacity-1 "}`}
+          style={{
+            backgroundImage: `url(${rightArrow})`,
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+          whileTap={{ scale: 0.8 }}
+        ></motion.button>
+        {/* BUTTON LEFT */}
+        <motion.button
+          onClick={prev}
+          disabled={imgIndex == 0 ? true : false}
+          className={`absolute bottom-1/2 left-0 right-auto top-auto z-10 ml-10 h-20 min-w-16 font-bold text-white ${imgIndex == 0 ? "opacity-45" : "opacity-1"}`}
+          style={{
+            backgroundImage: `url(${leftArrow})`,
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+          whileTap={{ scale: 0.8 }}
+        ></motion.button>
+        {/* CAROUSEL */}
+        {images.map((image, index) => (
+          <div key={index}>
+            {/* {isInView ? ( */}
             <motion.div
               ref={track}
               className="grid aspect-video w-screen shrink-0 grid-cols-12 grid-rows-10 bg-primaryBackground"
@@ -169,7 +207,6 @@ const Carousel = () => {
                     variants={shapeVariant}
                     style={{ originX: 1 }}
                   ></motion.div>
-
                   <motion.div
                     className="col-start-7 col-end-9 row-start-1 row-end-3  bg-primaryBackground"
                     variants={shapeVariant}
@@ -177,7 +214,6 @@ const Carousel = () => {
                   ></motion.div>
                 </motion.div>
               </motion.div>
-
               {/* GRAY RECTANGLE */}
               <motion.div
                 className="relative col-start-2 col-end-7 row-start-5 row-end-9"
@@ -204,12 +240,138 @@ const Carousel = () => {
               </motion.div>
               {/* <div className="z-10 col-start-1 col-end-2 row-start-1 row-end-11 border-r-4 border-goldLines"></div> */}
             </motion.div>
-          ) : (
-            <></>
-          )}
-        </div>
-      ))}
-    </div>
+            {/* ) : (
+              <></>
+            )} */}
+          </div>
+        ))}
+      </div>
+
+      {/* MOBILE */}
+      <div
+        className="sticky top-0 flex h-screen w-full overflow-hidden md:hidden"
+        ref={track}
+      >
+        {/* PAGE NUMBER */}
+        {isInView ? (
+          <motion.div
+            className={`absolute bottom-[10%] z-10 h-6 w-full  `}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.5, ease: "easeInOut" }}
+          >
+            <PageTracker page={imgIndex + 1} />
+          </motion.div>
+        ) : (
+          <></>
+        )}
+        {/* BUTTON RIGHT */}
+        <motion.button
+          onClick={next}
+          disabled={imgIndex == 4 ? true : false}
+          className={`absolute bottom-[10%] left-auto right-0 top-auto z-10 mr-5 h-10 min-w-16  font-bold text-white ${imgIndex == 4 ? "opacity-45" : "opacity-1 "}`}
+          style={{
+            backgroundImage: `url(${rightArrow})`,
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+          whileTap={{ scale: 0.8 }}
+        ></motion.button>
+        {/* BUTTON LEFT */}
+        <motion.button
+          onClick={prev}
+          disabled={imgIndex == 0 ? true : false}
+          className={`absolute bottom-[10%] left-0 right-auto top-auto z-10 ml-5 h-10 min-w-16 font-bold text-white ${imgIndex == 0 ? "opacity-45" : "opacity-1"}`}
+          style={{
+            backgroundImage: `url(${leftArrow})`,
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+          whileTap={{ scale: 0.8 }}
+        ></motion.button>
+        {/* CAROUSEL */}
+        {images.map((image, index) => (
+          <div key={index} className="h-screen ">
+            <motion.div
+              ref={track}
+              className="grid h-full w-screen shrink-0 cursor-grab bg-green-500 active:cursor-grabbing max-xs:grid-cols-6 max-xs:grid-rows-4"
+              drag="x"
+              dragConstraints={{
+                left: 0,
+                right: 0,
+              }}
+              style={{
+                x: dragX,
+              }}
+              onDragEnd={onDragEnd}
+              transition={TWEEN_OPTIONS}
+              animate={{ translateX: x }}
+            >
+              <motion.div
+                className="col-span-6 col-start-1 row-span-4 row-start-1 shrink-0"
+                style={{
+                  backgroundImage: `url(${image.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                {/* IMAGES */}
+                <motion.div
+                  className="grid h-full w-full grid-cols-6 grid-rows-4"
+                  variants={primaryVariant}
+                  animate={imgIndex + 1 == image.id ? "animate" : ""}
+                  initial="initial"
+                >
+                  {/* SHAPE VARIANTS */}
+                  <motion.div
+                    className="col-span-2 col-start-1 row-span-4 row-start-1  bg-primaryBackground"
+                    variants={shapeVariant}
+                    style={{ originX: 1 }}
+                  ></motion.div>
+                  <motion.div
+                    className="col-span-2 col-start-3 row-span-4 row-start-1   bg-primaryBackground"
+                    variants={shapeVariant}
+                    style={{ originX: 1 }}
+                  ></motion.div>
+                  <motion.div
+                    className="row-start- col-span-2 col-start-5 row-span-4  bg-primaryBackground"
+                    variants={shapeVariant}
+                    style={{ originX: 1 }}
+                  ></motion.div>
+                </motion.div>
+              </motion.div>
+              {/* GRAY RECTANGLE */}
+              <motion.div
+                className="col-span-6 col-start-1 row-span-2 row-start-2 flex items-center "
+                variants={secondaryVariant}
+                animate={imgIndex + 1 == image.id ? "animate" : ""}
+                initial="initial"
+              >
+                <div className="grid h-3/5 w-full grid-cols-6 grid-rows-2  bg-primaryBackground bg-opacity-45  ">
+                  <div className="col-span-6 col-start-1 row-span-2 row-start-1 flex h-full w-full flex-col items-center justify-center px-2 ">
+                    <motion.div
+                      className="text-title relative z-10 flex items-center text-center"
+                      variants={titleVariant}
+                    >
+                      <span className="text-title-color">{image.title}</span>
+                    </motion.div>
+                    <motion.div
+                      className="text-title relative z-10 flex items-center"
+                      variants={titleVariant}
+                    >
+                      <span className="text-title-color">{image.subTitle}</span>
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        ))}
+        {/* </div> */}
+      </div>
+    </>
   );
 };
 

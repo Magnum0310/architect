@@ -35,9 +35,9 @@ function App() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden bg-primaryBackground font-Coda">
+    <div className="relative bg-primaryBackground font-Coda">
       {/* NAV */}
-      {/* <div className="absolute grid min-h-screen w-full grid-cols-12 grid-rows-10 border-b-4 border-solid border-goldLines">
+      <div className="absolute grid min-h-screen w-full grid-cols-12 grid-rows-10 border-b-4 border-solid border-goldLines max-md:hidden">
         <div className="absolute top-16 w-full border-b-4 border-solid border-goldLines  ">
           <div className="grid h-full w-full grid-cols-6 text-white">
             <a
@@ -60,7 +60,7 @@ function App() {
             </a>
           </div>
         </div>
-      </div> */}
+      </div>
       {/* HERO SECTION */}
       <div>
         <Hero />
@@ -70,35 +70,35 @@ function App() {
         <About />
       </div>
       {/* SERVICES SECTION */}
-      <div className="h-screen" id="service">
+      <div className="h-screen max-xs:h-[70vh]" id="service">
         <Services />
       </div>
-      <div className="relative md:min-h-[1300vh]" ref={track}>
-        <div className="max-xs:h-screen sticky top-0 md:min-h-[300vh]">
+      <div className="max-xs:h-[550vh] md:min-h-[1300vh]" ref={track}>
+        <div className="sticky top-0  max-xs:h-screen md:min-h-[300vh]">
           <Design track={track} />
         </div>
-        {/* <div className="max-xs:h-screen max-xs:bg-violet-500 sticky top-0 md:min-h-[200vh] ">
+        <div className="sticky top-0 max-xs:h-screen md:min-h-[200vh]">
           <Interior track={track} />
         </div>
-        <div className="max-xs:h-screen max-xs:bg-violet-500 sticky top-0 md:min-h-[200vh] ">
+        <div className="sticky top-0 max-xs:h-screen md:min-h-[200vh]">
           <Landscape track={track} />
         </div>
-        <div className="max-xs:h-screen max-xs:bg-violet-500 sticky top-0 md:min-h-[200vh] ">
+        <div className="sticky top-0 max-xs:h-screen md:min-h-[200vh] ">
           <Project track={track} />
         </div>
-        <div className="max-xs:h-screen max-xs:bg-violet-500 sticky top-0 md:min-h-[100vh] ">
+        <div className="sticky top-0 max-xs:h-screen md:min-h-[100vh] ">
           <Construction track={track} />
-        </div> */}
+        </div>
       </div>
       {/* OTHER SERVICES SECTION */}
       <div className="h-[70vh]">
         <OtherServices />
       </div>
-      <div className="h-[200vh] text-white">
+      <div className="min-h-[200vh] text-white max-md:relative">
         <Carousel />
       </div>
       {/* CONTACT SECTION */}
-      <div className="h-screen text-white" id="contact">
+      <div className="h-screen text-white max-xs:relative" id="contact ">
         <Contact />
       </div>
       {/* <div>
