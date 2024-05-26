@@ -318,7 +318,8 @@ const PageTemplate = () => {
                           className="text-contact-detail"
                           variants={textVariant}
                         >
-                          Dave O. Candelario
+                          {/* Dave O. Candelario */}
+                          XXXX-XXXXX-XXXXX
                         </motion.div>
                       </div>
                     </div>
@@ -337,14 +338,16 @@ const PageTemplate = () => {
                           variants={textVariant}
                           transition={{ delay: detailDelay }}
                         >
-                          09777538014
+                          XXXX-XXXXX-XXXXX
+                          {/* 09777538014 */}
                         </motion.div>
                         <motion.div
                           className="text-contact-detail"
                           variants={textVariant}
                           transition={{ delay: detailDelay }}
                         >
-                          09616397716
+                          XXXX-XXXXX-XXXXX
+                          {/* 09616397716 */}
                         </motion.div>
                       </div>
                     </div>
@@ -363,7 +366,8 @@ const PageTemplate = () => {
                           variants={textVariant}
                           transition={{ delay: detailDelay }}
                         >
-                          dav08veolarte@gmail.com
+                          XXXX-XXXXX-XXXXX
+                          {/* dav08veolarte@gmail.com */}
                         </motion.div>
                       </div>
                     </div>
@@ -382,7 +386,8 @@ const PageTemplate = () => {
                           variants={textVariant}
                           transition={{ delay: detailDelay }}
                         >
-                          Brgy. Sampaloc Bolinao Pangasinan
+                          XXXX-XXXXX-XXXXX
+                          {/* Brgy. Sampaloc Bolinao Pangasinan */}
                         </motion.div>
                       </div>
                     </div>
@@ -431,7 +436,7 @@ const PageTemplate = () => {
           {/* FACEBOOK */}
           <div className="z-10 col-span-3 col-start-4 row-start-4 flex place-items-center justify-center ">
             <div
-              className="h-1/4 w-1/4"
+              className="relative h-1/4 w-1/4"
               style={{
                 backgroundImage: `url(${Image.Facebook})`,
                 backgroundPosition: "center",

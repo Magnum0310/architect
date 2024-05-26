@@ -108,7 +108,7 @@ const Carousel = () => {
   };
 
   // SWIPE CONFIGS
-  const DRAG_BUFFER = 50;
+  const DRAG_BUFFER = 30;
   const dragX = useMotionValue(0);
   const onDragEnd = () => {
     const x = dragX.get();
@@ -265,32 +265,35 @@ const Carousel = () => {
         ) : (
           <></>
         )}
-        {/* BUTTON RIGHT */}
-        <motion.button
-          onClick={next}
-          disabled={imgIndex == 4 ? true : false}
-          className={`absolute bottom-[10%] left-auto right-0 top-auto z-10 mr-5 h-10 min-w-16  font-bold text-white ${imgIndex == 4 ? "opacity-45" : "opacity-1 "}`}
-          style={{
-            backgroundImage: `url(${rightArrow})`,
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-          whileTap={{ scale: 0.8 }}
-        ></motion.button>
-        {/* BUTTON LEFT */}
-        <motion.button
-          onClick={prev}
-          disabled={imgIndex == 0 ? true : false}
-          className={`absolute bottom-[10%] left-0 right-auto top-auto z-10 ml-5 h-10 min-w-16 font-bold text-white ${imgIndex == 0 ? "opacity-45" : "opacity-1"}`}
-          style={{
-            backgroundImage: `url(${leftArrow})`,
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-          whileTap={{ scale: 0.8 }}
-        ></motion.button>
+
+        <div className="absolute flex h-full w-full">
+          {/* BUTTON RIGHT */}
+          <motion.button
+            onClick={next}
+            disabled={imgIndex == 4 ? true : false}
+            className={`absolute bottom-[10%] left-auto right-0 top-auto z-10 mr-5 h-10 min-w-16  font-bold text-white ${imgIndex == 4 ? "opacity-45" : "opacity-1 "}`}
+            style={{
+              backgroundImage: `url(${rightArrow})`,
+              backgroundSize: "contain",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+            whileTap={{ scale: 0.8 }}
+          ></motion.button>
+          {/* BUTTON LEFT */}
+          <motion.button
+            onClick={prev}
+            disabled={imgIndex == 0 ? true : false}
+            className={`absolute bottom-[10%] left-0 right-auto top-auto z-10 ml-5 h-10 min-w-16 font-bold text-white ${imgIndex == 0 ? "opacity-45" : "opacity-1"}`}
+            style={{
+              backgroundImage: `url(${leftArrow})`,
+              backgroundSize: "contain",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+            whileTap={{ scale: 0.8 }}
+          ></motion.button>
+        </div>
         {/* CAROUSEL */}
         {images.map((image, index) => (
           <div key={index} className="h-screen ">
