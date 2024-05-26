@@ -266,12 +266,13 @@ const Carousel = () => {
           <></>
         )}
 
-        <div className="absolute flex h-full w-full">
-          {/* BUTTON RIGHT */}
+        {/* <div className=" absolute z-30 flex h-full w-full bg-red-500"> */}
+        {/* BUTTON RIGHT */}
+        <div className="justify-cente absolute bottom-[10%] left-auto right-0 top-auto z-10 flex items-center">
           <motion.button
             onClick={next}
             disabled={imgIndex == 4 ? true : false}
-            className={`absolute bottom-[10%] left-auto right-0 top-auto z-10 mr-5 h-10 min-w-16  font-bold text-white ${imgIndex == 4 ? "opacity-45" : "opacity-1 "}`}
+            className={` left-auto right-0 top-auto z-10 mr-5 h-10 min-w-16 font-bold text-white ${imgIndex == 4 ? "opacity-45" : "opacity-1 "}`}
             style={{
               backgroundImage: `url(${rightArrow})`,
               backgroundSize: "contain",
@@ -280,7 +281,9 @@ const Carousel = () => {
             }}
             whileTap={{ scale: 0.8 }}
           ></motion.button>
-          {/* BUTTON LEFT */}
+        </div>
+        {/* BUTTON LEFT */}
+        <div className="absolute bottom-[10%] left-0 right-auto top-auto z-10 flex items-center justify-center bg-orange-500 ">
           <motion.button
             onClick={prev}
             disabled={imgIndex == 0 ? true : false}
@@ -294,12 +297,13 @@ const Carousel = () => {
             whileTap={{ scale: 0.8 }}
           ></motion.button>
         </div>
+        {/* </div> */}
         {/* CAROUSEL */}
         {images.map((image, index) => (
           <div key={index} className="h-screen ">
             <motion.div
               ref={track}
-              className="grid h-full w-screen shrink-0 cursor-grab bg-green-500 active:cursor-grabbing max-xs:grid-cols-6 max-xs:grid-rows-4"
+              className="grid h-full w-screen shrink-0 cursor-grab bg-green-500 active:cursor-grabbing max-md:grid-cols-6 max-md:grid-rows-4"
               drag="x"
               dragConstraints={{
                 left: 0,

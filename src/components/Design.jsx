@@ -80,7 +80,7 @@ const ServicesPage = ({ track }) => {
   return (
     <>
       {/* TABLET */}
-      <div className="mb-96  max-md:hidden">
+      <div className="mb-96 max-md:hidden">
         <motion.div className="grid grid-cols-12 grid-rows-10">
           <motion.div className="col-start-1 col-end-13 row-start-1 row-end-11 ">
             <motion.div
@@ -146,9 +146,9 @@ const ServicesPage = ({ track }) => {
       </div>
 
       {/* MOBILE */}
-      <div className=" bg-primaryBackground max-xs:h-full max-xs:w-full md:mb-96 md:hidden">
+      <div className=" bg-primaryBackground max-md:h-full max-md:w-full md:mb-96 md:hidden">
         {/* MAIN GRID */}
-        <motion.div className="max-xs:flex max-xs:h-full max-xs:w-full max-xs:flex-col max-xs:justify-center md:grid md:grid-cols-12 md:grid-rows-10 ">
+        <motion.div className="max-md:flex max-md:h-full max-md:w-full max-md:flex-col max-md:justify-center md:grid md:grid-cols-12 md:grid-rows-10 ">
           {/* IMAGE */}
           <motion.div className="relative h-1/2 w-full  md:hidden">
             <motion.div
@@ -188,7 +188,7 @@ const ServicesPage = ({ track }) => {
           {/* BORDER LINE */}
           <div className="z-10 col-start-1 col-end-2 row-start-1 row-end-11 border-r-4 border-goldLines"></div>
           <div className="absolute grid h-full w-full grid-cols-6 grid-rows-4 md:hidden">
-            <div className="relative border-r-4 border-solid border-goldLines max-xs:col-start-1 max-xs:col-end-2  max-xs:row-span-4 max-xs:row-start-1 max-xs:w-1/2"></div>
+            <div className="relative border-r-4 border-solid border-goldLines max-md:col-start-1 max-md:col-end-2  max-md:row-span-4 max-md:row-start-1 max-md:w-1/2"></div>
           </div>
         </motion.div>
       </div>

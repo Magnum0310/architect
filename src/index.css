@@ -16,25 +16,25 @@ html {
   }
   /* FONT SIZES */
   .text-title {
-    @apply text-8xl max-xs:text-5xl;
+    @apply text-8xl max-md:text-5xl;
   }
   .text-other {
-    @apply text-9xl max-xs:text-3xl;
+    @apply text-9xl max-md:text-3xl;
   }
   .text-subtitle {
     @apply text-6xl;
   }
   .text-subtitle-description {
-    @apply text-3xl leading-[2.8rem] max-xs:text-base;
+    @apply text-3xl leading-[2.8rem] max-md:text-base;
   }
   .text-service-description {
     @apply text-xl;
   }
   .text-contact-title {
-    @apply text-xl max-xs:text-sm;
+    @apply text-xl max-md:text-sm;
   }
   .text-contact-detail {
-    @apply text-xl max-xs:text-base;
+    @apply text-xl max-md:text-base;
   }
   /* TEXT COLOR */
   .text-title-color {

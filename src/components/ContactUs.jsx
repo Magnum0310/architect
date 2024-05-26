@@ -266,9 +266,9 @@ const PageTemplate = () => {
         {/* MAIN GRID */}
         <div className="relative grid h-screen grid-cols-6 grid-rows-4 md:hidden">
           {/* BORDER LINES */}
-          <div className="relative z-30 border-r-4 border-solid border-goldLines max-xs:col-start-1 max-xs:col-end-2 max-xs:row-span-4 max-xs:row-start-1 max-xs:w-1/2"></div>
-          <div className="relative z-20  bg-primaryBackground bg-opacity-45 max-xs:col-start-1 max-xs:col-end-2 max-xs:row-span-4 max-xs:row-start-1 max-xs:w-full"></div>
-          <div className="text-page-title-color relative z-20 flex items-center justify-center border-b-4 border-goldLines bg-primaryBackground bg-opacity-45 max-xs:col-span-6 max-xs:col-start-1 max-xs:row-start-1 max-xs:h-1/4 max-xs:text-base">
+          <div className="relative z-30 border-r-4 border-solid border-goldLines max-md:col-start-1 max-md:col-end-2 max-md:row-span-4 max-md:row-start-1 max-md:w-1/2"></div>
+          <div className="relative z-20  bg-primaryBackground bg-opacity-45 max-md:col-start-1 max-md:col-end-2 max-md:row-span-4 max-md:row-start-1 max-md:w-full"></div>
+          <div className="text-page-title-color relative z-20 flex items-center justify-center border-b-4 border-goldLines bg-primaryBackground bg-opacity-45 max-md:col-span-6 max-md:col-start-1 max-md:row-start-1 max-md:h-1/4 max-md:text-base">
             CONTACT
           </div>
           {/* CONTACT INFO BOX */}
@@ -297,7 +297,7 @@ const PageTemplate = () => {
                     </motion.div>
                     <motion.div
                       variants={titleTextVariant}
-                      className="text-subtitle-description text-subtitle-color mr-5 max-xs:text-sm"
+                      className="text-subtitle-description text-subtitle-color mr-5 max-md:text-sm"
                     >
                       Ready to bring your architectural vision to life? Reach
                       out to us today to schedule a consultation with our team
@@ -434,7 +434,7 @@ const PageTemplate = () => {
             <></>
           )}
           {/* FACEBOOK */}
-          <div className="z-10 col-span-3 col-start-4 row-start-4 flex place-items-center justify-center ">
+          <div className="relative z-10 col-span-3 col-start-4 row-start-4 flex place-items-center justify-center ">
             <div
               className="relative h-1/4 w-1/4"
               style={{

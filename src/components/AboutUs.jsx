@@ -42,17 +42,17 @@ const PageTemplate = () => {
       </div>
 
       {/* MOBILE */}
-      <div className="grid w-screen flex-col bg-red-500 max-xs:h-screen max-xs:grid-cols-6 max-xs:grid-rows-4 max-xs:gap-0 md:hidden md:h-[130vh]">
-        <div className="relative z-30 border-r-4 border-solid border-goldLines max-xs:col-start-1 max-xs:col-end-2 max-xs:row-span-4 max-xs:row-start-1 max-xs:w-1/2"></div>
-        <div className="text-page-title-color relative z-20 flex items-center justify-center border-b-4 border-goldLines bg-primaryBackground bg-opacity-45 max-xs:col-span-6 max-xs:col-start-1 max-xs:row-start-1 max-xs:h-1/4 max-xs:text-base">
+      <div className="grid w-screen flex-col bg-red-500 max-md:h-screen max-md:grid-cols-6 max-md:grid-rows-4 max-md:gap-0 md:hidden md:h-[130vh]">
+        <div className="relative z-30 border-r-4 border-solid border-goldLines max-md:col-start-1 max-md:col-end-2 max-md:row-span-4 max-md:row-start-1 max-md:w-1/2"></div>
+        <div className="text-page-title-color relative z-20 flex items-center justify-center border-b-4 border-goldLines bg-primaryBackground bg-opacity-45 max-md:col-span-6 max-md:col-start-1 max-md:row-start-1 max-md:h-1/4 max-md:text-base">
           ABOUT US
         </div>
-        <div className="relative z-20 h-full max-xs:col-span-5 max-xs:col-start-2 max-xs:row-start-2  max-xs:place-items-center">
-          <div className="relative flex flex-col  gap-10 bg-primaryBackground bg-opacity-45 max-xs:py-4 max-xs:pl-2 max-xs:pr-4">
-            <div className="text-subtitle-color relative max-xs:text-left max-xs:text-4xl">
+        <div className="relative z-20 h-full max-md:col-span-5 max-md:col-start-2 max-md:row-start-2  max-md:place-items-center">
+          <div className="relative flex flex-col  gap-10 bg-primaryBackground bg-opacity-45 max-md:py-4 max-md:pl-2 max-md:pr-4">
+            <div className="text-subtitle-color relative max-md:text-left max-md:text-4xl">
               Where dreams Take Shape
             </div>
-            <div className="text-subtitle-description-color max-xs:text-subtitle-description relative font-Fahkwang  font-thin max-xs:text-left">
+            <div className="text-subtitle-description-color max-md:text-subtitle-description relative font-Fahkwang  font-thin max-md:text-left">
               Step into a world of endless possibilities with
               <span className="font-bold"> DOC. </span>
               From concept to completion, we specialize in turning your
@@ -62,7 +62,7 @@ const PageTemplate = () => {
             </div>
           </div>
         </div>
-        <div className="h-full w-full max-xs:absolute">
+        <div className="h-full w-full max-md:absolute">
           <div className="relative h-full w-full">
             <div
               className="relative h-full w-full"

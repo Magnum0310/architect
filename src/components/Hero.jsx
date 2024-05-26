@@ -5,16 +5,15 @@ import Logo from "../assets/DOC_Logo.svg";
 const PageTemplate = () => {
   return (
     <>
-      <div className="grid min-h-screen grid-cols-12 grid-rows-10 flex-col max-xs:w-screen max-xs:grid-cols-6 max-xs:grid-rows-5 max-xs:gap-0">
+      <div className="grid min-h-screen grid-cols-12 grid-rows-10 flex-col max-md:w-screen max-md:grid-cols-6 max-md:grid-rows-5 max-md:gap-0 ">
         {/* TABLET */}
-
         {/* BORDER LINES */}
         <div className="col-start-1 col-end-2 row-start-1 row-end-2 flex items-end justify-center border-r-4 border-solid border-goldLines max-md:hidden"></div>
         <div className="z-20 col-start-1 col-end-1 row-start-2 row-end-11 border-r-4 border-solid border-goldLines max-md:hidden"></div>
         {/* WHITE BACKGROUND */}
         <div className="col-start-1 col-end-13 row-start-3 row-end-8 max-md:hidden">
           <div className="relative flex h-full w-full flex-col">
-            <div className="relative h-full w-full flex-1 bg-white bg-cover bg-center"></div>
+            <div className="relative h-full w-full flex-1  bg-cover bg-center xs:bg-cyan-500"></div>
           </div>
         </div>
         {/* IMAGE BACKGROUND */}
@@ -49,16 +48,16 @@ const PageTemplate = () => {
         </div>
 
         {/* MOBILE */}
-        <div className="relative z-30 border-r-4 border-solid border-goldLines max-xs:col-start-1 max-xs:col-end-2 max-xs:row-span-6 max-xs:row-start-1 max-xs:w-1/2 md:hidden"></div>
+        <div className="relative z-30 border-r-4 border-solid border-goldLines max-md:col-start-1 max-md:col-end-2 max-md:row-span-6 max-md:row-start-1 max-md:w-1/2 md:hidden"></div>
         <div className="col-start-1 col-end-2 row-start-1 row-end-2 flex items-end justify-center border-r-4 border-solid border-goldLines md:hidden"></div>
         {/* WHITE BACKGROUND */}
-        <div className="h-full w-full max-xs:absolute md:hidden">
+        <div className="h-full w-full max-md:absolute md:hidden">
           <div className="relative h-full w-full">
             <div className="relative h-screen w-full bg-white"></div>
           </div>
         </div>
         {/* BACKGROUND IMAGE */}
-        <div className="max-xs:col-span-6 max-xs:col-start-1 max-xs:row-span-2 max-xs:row-start-4 md:hidden">
+        <div className="max-md:col-span-6 max-md:col-start-1 max-md:row-span-2 max-md:row-start-4 md:hidden">
           <div
             className="relative h-full w-full flex-1 md:bg-[center_bottom_-5rem]"
             style={{
@@ -70,10 +69,10 @@ const PageTemplate = () => {
           ></div>
         </div>
         {/* LOGO */}
-        <div className="z-10 h-full w-full max-xs:col-span-6 max-xs:col-start-1 max-xs:row-span-3 max-xs:row-start-1 md:hidden">
-          <div className="relative h-full w-full max-xs:grid max-xs:grid-cols-6 max-xs:grid-rows-3">
+        <div className="z-10 h-full w-full max-md:col-span-6 max-md:col-start-1 max-md:row-span-3 max-md:row-start-1 md:hidden">
+          <div className="relative h-full w-full max-md:grid max-md:grid-cols-6 max-md:grid-rows-3">
             <div
-              className=" relative col-span-5 col-start-1 row-span-2 row-start-1 h-[100%] w-full "
+              className=" relative col-span-4 col-start-1 row-span-2 row-start-1 h-[100%] w-full "
               style={{
                 backgroundImage: `url(${Logo})`,
                 backgroundSize: "contain",
@@ -82,10 +81,10 @@ const PageTemplate = () => {
               }}
             ></div>
             <div className="col-start-2 col-end-6 row-span-2 row-start-2 flex w-full flex-col items-center justify-center  pt-10 text-4xl">
-              <span className="w-full tracking-wider max-xs:text-right max-xs:tracking-normal">
+              <span className="w-full tracking-wider max-md:text-right max-md:tracking-normal">
                 Architectural
               </span>
-              <span className="w-full tracking-wider max-xs:text-right  max-xs:tracking-normal">
+              <span className="w-full tracking-wider max-md:text-right  max-md:tracking-normal">
                 Services
               </span>
             </div>
