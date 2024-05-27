@@ -6,7 +6,7 @@ const PageTemplate = () => {
     <>
       {/* TABLET */}
       <div className="relative grid h-full grid-cols-12 grid-rows-9 max-md:hidden">
-        <div className="text-page-title-color col-start-1 col-end-2 row-start-1 row-end-2 flex items-end justify-center border-b-4 border-r-4 border-solid border-goldLines pb-2 text-2xl">
+        <div className="text-page-title-color text-page-section col-start-1 col-end-2 row-start-1 row-end-2 flex items-end justify-center border-b-4 border-r-4 border-solid border-goldLines pb-2">
           <div className="relative flex h-full w-full flex-col items-center justify-end ">
             <div>
               <p>OTHER</p>
@@ -18,7 +18,7 @@ const PageTemplate = () => {
         <div className="z-20 col-start-1 col-end-1 row-start-2 row-end-10 border-r-4 border-solid border-goldLines"></div>
         <div className="col-start-3 col-end-11 row-start-3 row-end-7 grid ">
           <div className="relative flex h-full w-full flex-col justify-evenly gap-12">
-            <div className="text-subtitle text-subtitle-color">
+            <div className="text-page-section-title text-subtitle-color">
               Explore additional offerings to complement your architectural
               needs:
             </div>
@@ -40,17 +40,17 @@ const PageTemplate = () => {
               needs:
             </div>
             {/* NEED TO BE HIDDEN - will edit later */}
-            <div className="text-subtitle-description-color relative hidden font-Fahkwang font-thin  max-md:text-left max-md:text-lg">
+            {/* <div className="text-subtitle-description-color relative hidden font-Fahkwang font-thin  max-md:text-left max-md:text-lg">
               Step into a world of endless possibilities with
               <span className="font-bold"> DOC. </span>
               From concept to completion, we specialize in turning your
               architectural dreams into stunning reality. Whether you're
               envisioning a modern masterpiece or a cozy retreat, we're here to
               make it happen.
-            </div>
+            </div> */}
           </div>
         </div>
-        <div className="hidden h-full w-full max-md:absolute">
+        {/* <div className="hidden h-full w-full max-md:absolute">
           <div className="relative h-full w-full">
             <div
               className="relative h-full w-full"
@@ -62,7 +62,7 @@ const PageTemplate = () => {
               }}
             ></div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

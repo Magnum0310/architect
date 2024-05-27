@@ -85,26 +85,29 @@ const PageTemplate = () => {
     margin: "0px 100px -300px 0px",
   });
   return (
-    <>
+    <div
+      className="relative grid h-screen grid-cols-12 grid-rows-9 max-lg:grid-cols-6 max-lg:grid-rows-4"
+      ref={divRef}
+    >
       {/* TABLET */}
-      <div ref={divRef}>
-        <div className="relative grid h-screen grid-cols-12 grid-rows-9 max-md:hidden">
+      <div className=" relative col-span-12 col-start-1 row-span-9 row-start-1 max-lg:hidden">
+        <div className="relative grid h-screen grid-cols-12 grid-rows-9 ">
           <div className="text-page-title-color col-start-1 col-end-2 row-start-1 row-end-2 flex items-end justify-center border-b-4 border-r-4 border-solid border-goldLines pb-2 text-2xl">
-            <div className="relative flex h-full w-full flex-col items-center justify-end ">
+            <div className="text-page-section relative flex h-full w-full flex-col items-center justify-end">
               <div>
                 <p>CONTACT</p>
               </div>
             </div>
           </div>
-          <div className="col-start-2 col-end-13 grid  border-b-4 border-solid border-goldLines "></div>
+          <div className="col-start-2 col-end-13 grid border-b-4 border-solid border-goldLines "></div>
           <div className="z-20 col-start-1 col-end-1 row-start-2 row-end-10 border-r-4 border-solid border-goldLines"></div>
           {/* CONTACT INFO BOX */}
           {isInView ? (
             <>
               {/* CONTACT DETAILS */}
-              <motion.div className="col-start-3 col-end-9 row-start-3 row-end-10 grid overflow-hidden ">
+              <motion.div className="col-start-2 col-end-8 row-start-2 row-end-10 grid overflow-hidden px-[2rem] py-[2rem] ">
                 <motion.div
-                  className="flex flex-col gap-8 "
+                  className="flex flex-col gap-5 "
                   variants={titleVariant}
                   initial="initial"
                   animate="animate"
@@ -116,29 +119,32 @@ const PageTemplate = () => {
                     animate="animate"
                   >
                     <motion.div
-                      className="text-title text-subtitle-color "
+                      className="service-title text-subtitle-color "
                       variants={titleTextVariant}
                     >
                       CONTACT US
                     </motion.div>
                     <motion.div
                       variants={titleTextVariant}
-                      className="text-subtitle-description text-subtitle-color"
+                      className="service-content text-subtitle-color"
                     >
                       Ready to bring your architectural vision to life? Reach
                       out to us today to schedule a consultation with our team
                       of experts.
                     </motion.div>
                   </motion.div>
-                  <div className="text-service-description text-subtitle-color">
+                  <div className="text-subtitle-color">
                     <div className="flex flex-col gap-2">
                       <motion.div
-                        className="text-contact-opacity"
+                        className="text-contact-opacity text-contact-title"
                         variants={textVariant}
                       >
                         ARCHITECT
                       </motion.div>
-                      <motion.div variants={textVariant}>
+                      <motion.div
+                        variants={textVariant}
+                        className="text-contact-detail"
+                      >
                         Dave O. Candelario
                       </motion.div>
                     </div>
@@ -146,19 +152,21 @@ const PageTemplate = () => {
                   <div className="text-service-description text-subtitle-color">
                     <div className="flex flex-col gap-2">
                       <motion.div
-                        className="text-contact-opacity"
+                        className="text-contact-opacity text-contact-title"
                         variants={textVariant}
                         transition={{ delay: titleDelay }}
                       >
                         CONTACTS
                       </motion.div>
                       <motion.div
+                        className="text-contact-detail"
                         variants={textVariant}
                         transition={{ delay: detailDelay }}
                       >
                         09777538014
                       </motion.div>
                       <motion.div
+                        className="text-contact-detail"
                         variants={textVariant}
                         transition={{ delay: detailDelay }}
                       >
@@ -169,13 +177,14 @@ const PageTemplate = () => {
                   <div className="text-service-description text-subtitle-color">
                     <div className="flex flex-col gap-2">
                       <motion.div
-                        className="text-contact-opacity"
+                        className="text-contact-opacity text-contact-title"
                         variants={textVariant}
                         transition={{ delay: titleDelay }}
                       >
                         EMAIL
                       </motion.div>
                       <motion.div
+                        className="text-contact-detail"
                         variants={textVariant}
                         transition={{ delay: detailDelay }}
                       >
@@ -186,13 +195,14 @@ const PageTemplate = () => {
                   <div className="text-service-description text-subtitle-color">
                     <div className="flex flex-col gap-2">
                       <motion.div
-                        className="text-contact-opacity"
+                        className="text-contact-opacity text-contact-title"
                         variants={textVariant}
                         transition={{ delay: titleDelay }}
                       >
                         LOCATION
                       </motion.div>
                       <motion.div
+                        className="text-contact-detail"
                         variants={textVariant}
                         transition={{ delay: detailDelay }}
                       >
@@ -204,7 +214,7 @@ const PageTemplate = () => {
               </motion.div>
               {/* BACKGROUND IMAGE */}
               <motion.div
-                className="col-start-9 col-end-13 row-start-3 row-end-10 bg-violet-500 "
+                className="col-start-8 col-end-13 row-start-2 row-end-10 bg-violet-500 "
                 style={{
                   backgroundImage: `url(${Image.Contact})`,
                   backgroundSize: "cover",
@@ -236,13 +246,25 @@ const PageTemplate = () => {
                     style={{ originX: 1 }}
                   ></motion.div>
                 </div>
-              </motion.div>{" "}
+              </motion.div>
             </>
           ) : (
             <></>
           )}
+          {/* FACEBOOK */}
+          <div className="relative z-40 col-span-4 col-start-5 row-span-4 row-start-6 flex place-items-center justify-center py-28 ">
+            <div
+              className="relative h-full w-full"
+              style={{
+                backgroundImage: `url(${Image.Facebook})`,
+                backgroundPosition: "center",
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
+          </div>
           {/* CONTACT FOOTER */}
-          <div className="text-service-description relative top-1/2 col-start-1 col-end-13 row-start-9 row-end-10 flex h-1/2 w-full justify-center bg-white bg-opacity-100">
+          <div className="text-service-description relative col-start-1 col-end-13 row-start-9 row-end-9 flex h-1/2 w-full translate-y-full justify-center bg-white bg-opacity-100">
             <div className="relative flex w-1/4 place-content-center items-center">
               <div
                 className="relative flex h-full basis-[30%]"
@@ -253,22 +275,19 @@ const PageTemplate = () => {
                   backgroundPosition: "center",
                 }}
               ></div>
-              <div className="flex flex-1 text-black ">
-                <span>ARCHITECTURAL SERVICES</span>
-              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* MOBILE */}
-      <div ref={divRef}>
-        {/* MAIN GRID */}
-        <div className="relative grid h-screen grid-cols-6 grid-rows-4 md:hidden">
+      {/* MAIN GRID */}
+      <div className="relative col-span-6 col-start-1 row-span-4 row-start-1 lg:hidden">
+        <div className="relative grid h-screen grid-cols-6 grid-rows-4">
           {/* BORDER LINES */}
-          <div className="relative z-30 border-r-4 border-solid border-goldLines max-md:col-start-1 max-md:col-end-2 max-md:row-span-4 max-md:row-start-1 max-md:w-1/2"></div>
-          <div className="relative z-20  bg-primaryBackground bg-opacity-45 max-md:col-start-1 max-md:col-end-2 max-md:row-span-4 max-md:row-start-1 max-md:w-full"></div>
-          <div className="text-page-title-color relative z-20 flex items-center justify-center border-b-4 border-goldLines bg-primaryBackground bg-opacity-45 max-md:col-span-6 max-md:col-start-1 max-md:row-start-1 max-md:h-1/4 max-md:text-base">
+          <div className="relative z-30 border-r-4 border-solid border-goldLines max-lg:col-start-1 max-lg:col-end-2 max-lg:row-span-4 max-lg:row-start-1 max-lg:w-1/2"></div>
+          <div className="relative z-20  bg-primaryBackground bg-opacity-45 max-lg:col-start-1 max-lg:col-end-2 max-lg:row-span-4 max-lg:row-start-1 max-lg:w-full"></div>
+          <div className="text-page-title-color relative z-20 flex items-center justify-center border-b-4 border-goldLines bg-primaryBackground bg-opacity-45 max-lg:col-span-6 max-lg:col-start-1 max-lg:row-start-1 max-lg:h-1/4 max-lg:text-base">
             CONTACT
           </div>
           {/* CONTACT INFO BOX */}
@@ -277,7 +296,7 @@ const PageTemplate = () => {
               {/* CONTACT DETAILS */}
               <motion.div className="z-10 col-span-5 col-start-2 row-span-4 row-start-1 grid overflow-hidden bg-primaryBackground bg-opacity-45">
                 <motion.div
-                  className="grid grid-cols-6 grid-rows-4 items-center  pr-4"
+                  className="grid grid-cols-6 grid-rows-4 items-center pr-4"
                   variants={titleVariant}
                   initial="initial"
                   animate="animate"
@@ -297,7 +316,7 @@ const PageTemplate = () => {
                     </motion.div>
                     <motion.div
                       variants={titleTextVariant}
-                      className="text-subtitle-description text-subtitle-color mr-5 max-md:text-sm"
+                      className="text-subtitle-description text-subtitle-color mr-5 max-lg:text-sm"
                     >
                       Ready to bring your architectural vision to life? Reach
                       out to us today to schedule a consultation with our team
@@ -434,9 +453,9 @@ const PageTemplate = () => {
             <></>
           )}
           {/* FACEBOOK */}
-          <div className="relative z-10 col-span-3 col-start-4 row-start-4 flex place-items-center justify-center ">
+          <div className="relative z-10 col-span-2 col-start-5 row-start-4 flex place-items-center justify-center  py-14 ">
             <div
-              className="relative h-1/4 w-1/4"
+              className="relative h-full w-full"
               style={{
                 backgroundImage: `url(${Image.Facebook})`,
                 backgroundPosition: "center",
@@ -457,12 +476,13 @@ const PageTemplate = () => {
                   backgroundPosition: "center",
                 }}
               ></div>
+
               {/* <div className="flex w-full bg-blue-500 text-sm text-black"></div> */}
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

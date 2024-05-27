@@ -74,7 +74,7 @@ function App() {
         <Services />
       </div>
       <div className="max-md:h-[550vh] md:min-h-[1300vh]" ref={track}>
-        <div className="sticky top-0  max-md:h-screen md:min-h-[300vh]">
+        <div className="sticky top-0 max-md:h-screen md:min-h-[300vh]">
           <Design track={track} />
         </div>
         <div className="sticky top-0 max-md:h-screen md:min-h-[200vh]">
@@ -98,12 +98,9 @@ function App() {
         <Carousel />
       </div>
       {/* CONTACT SECTION */}
-      <div className="h-screen text-white max-md:relative" id="contact ">
+      <div className="h-screen text-white max-xs:relative" id="contact ">
         <Contact />
       </div>
-      {/* <div>
-        <Hero />
-      </div> */}
     </div>
   );
 }

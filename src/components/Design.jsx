@@ -93,7 +93,8 @@ const ServicesPage = ({ track }) => {
             />
           </motion.div>
           {/* WRAPPER */}
-          <div className="col-start-4 col-end-11 row-start-3 row-end-10">
+          {/* Need to copy to other services */}
+          <div className="col-start-4 col-end-11 row-start-3 row-end-10 max-lg:col-start-3 max-lg:col-end-12">
             <div className="relative grid h-full grid-cols-7 grid-rows-7 ">
               {/* GRAY RECTANGLE */}
               <motion.div
@@ -102,13 +103,13 @@ const ServicesPage = ({ track }) => {
               ></motion.div>
               {/* SERVICE TITLE */}
               <motion.div
-                className="text-title z-10 col-start-1 col-end-6 row-start-1 row-end-3 flex items-center justify-center"
+                className="service-title z-10 col-start-1 col-end-6 row-start-1 row-end-3 flex items-center justify-center"
                 style={{ y: yTitle }}
               >
                 <span className="text-title-color">{Details.design.title}</span>
               </motion.div>
               <motion.div
-                className="text-title z-10 col-start-4 col-end-7 row-start-2 row-end-4 flex  items-center"
+                className="service-title z-10 col-start-4 col-end-7 row-start-2 row-end-4 flex items-center"
                 style={{ y: yTitle }}
               >
                 <span className="text-title-color">
@@ -116,15 +117,17 @@ const ServicesPage = ({ track }) => {
                 </span>
               </motion.div>
               {/* SERVICE SUBTITLE */}
+              {/* Need to copy */}
               <motion.div
-                className="text-subtitle-description-color text-service-description  z-10 col-start-1 col-end-4 row-start-4 row-end-5 flex  justify-center font-Fahkwang"
+                className="text-subtitle-description-color service-content z-10 col-start-1 col-end-4 row-start-4 row-end-5 flex justify-center font-Fahkwang max-xl:hidden"
                 style={{ y: yDescription }}
               >
                 <span>{Details.design.descriptionTitle}</span>
               </motion.div>
               {/* SERVICE DESCRIPTION */}
+              {/* Neet to copy */}
               <motion.div
-                className="text-subtitle-description-color text-service-description z-10 col-start-4 col-end-7 row-start-4 row-end-7  font-Fahkwang"
+                className="text-subtitle-description-color service-content z-10 col-start-4 col-end-7 row-start-4 row-end-7 font-Fahkwang max-xl:col-start-2"
                 style={{ y: yDescription }}
               >
                 <span>{Details.design.description}</span>
@@ -146,11 +149,11 @@ const ServicesPage = ({ track }) => {
       </div>
 
       {/* MOBILE */}
-      <div className=" bg-primaryBackground max-md:h-full max-md:w-full md:mb-96 md:hidden">
+      <div className=" bg-primaryBackground max-md:h-full  max-md:w-full md:mb-96 md:hidden">
         {/* MAIN GRID */}
-        <motion.div className="max-md:flex max-md:h-full max-md:w-full max-md:flex-col max-md:justify-center md:grid md:grid-cols-12 md:grid-rows-10 ">
+        <motion.div className="max-md:flex max-md:h-full max-md:w-full max-md:flex-col max-md:justify-center md:grid md:grid-cols-12 md:grid-rows-10">
           {/* IMAGE */}
-          <motion.div className="relative h-1/2 w-full  md:hidden">
+          <motion.div className="relative h-1/2 w-full md:hidden">
             <motion.div
               className="h-full w-full bg-cover"
               style={{
@@ -164,13 +167,13 @@ const ServicesPage = ({ track }) => {
           <div className=" absolute grid h-3/4 w-full grid-cols-6 grid-rows-6 bg-green-500 bg-opacity-0 md:hidden">
             {/* SERVICE TITLE */}
             <motion.div
-              className=" col-span-6 col-start-2 flex items-end justify-start  text-4xl"
+              className=" service-title col-span-6 col-start-2 flex items-end  justify-start"
               style={{ y: 0 }}
             >
               <span className="text-title-color">{Details.design.title}</span>
             </motion.div>
             <motion.div
-              className=" col-span-6 col-start-2 flex items-start justify-start  text-4xl "
+              className=" service-title  col-span-6 col-start-2 flex items-start  justify-start "
               style={{ y: 0 }}
             >
               <span className="text-title-color">
@@ -179,7 +182,7 @@ const ServicesPage = ({ track }) => {
             </motion.div>
             <motion.div className=" col-span-6 col-start-1 row-span-3 row-start-3 bg-primaryBackground opacity-45"></motion.div>
             <motion.div
-              className="text-subtitle-description-color z-10 col-span-5 col-start-2 row-span-3 row-start-3 flex items-center  pr-5 text-left font-Fahkwang text-xs"
+              className="text-subtitle-description-color service-content z-10 col-span-5 col-start-2 row-span-3 row-start-3 flex  items-center pr-5 text-left font-Fahkwang"
               style={{ y: 0 }}
             >
               <span>{Details.design.description}</span>

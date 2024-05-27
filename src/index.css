@@ -7,7 +7,10 @@
 
 /* @tailwind base;
 html {
-  scroll-behavior: smooth;
+  margin: 100;
+  background-color: blue;
+  padding: 100;
+  box-sizing: border-box;
 } */
 
 @layer utilities {
@@ -15,27 +18,57 @@ html {
     @apply px-8 sm:px-14;
   }
   /* FONT SIZES */
+
+  /* TEXT TITLE */
   .text-title {
-    @apply text-8xl max-md:text-5xl;
+    @apply max-md:text-3xl md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl;
   }
+  /* PAGE SECTION TITLE EG. "SERVICES,ABOUT US" */
+  .text-page-section {
+    @apply max-md:text-sm md:text-base lg:text-base xl:text-2xl;
+  }
+  /* PAGE SECTION CONTENT TITLE */
+  .text-page-section-title {
+    @apply max-md:text-xl md:text-2xl lg:text-4xl xl:text-5xl;
+  }
+  /* PAGE SECTION CONTENT */
+  .text-page-section-content {
+    @apply max-md:text-sm max-md:leading-[1.5rem] md:text-lg lg:text-2xl;
+  }
+  /* SERVICE PAGE TITLE */
+  .service-title {
+    @apply max-md:text-3xl md:text-6xl  2xl:text-8xl;
+  }
+  /* SERVICE PAGE CONTENT*/
+  .service-content {
+    @apply 3xl:text-xl max-md:text-xs md:text-base;
+  }
+  /* CAROUSEL */
+  .text-carousel-title {
+    @apply max-md:text-3xl md:text-5xl lg:text-7xl;
+  }
+  /* CONTACT TITLE */
+  .text-contact-title {
+    @apply text-xl max-xl:text-sm;
+  }
+  /* CONTACT DETAILS */
+  .text-contact-detail {
+    @apply text-xl max-xl:text-lg;
+  }
+
   .text-other {
-    @apply text-9xl max-md:text-3xl;
+    @apply text-4xl max-md:text-2xl;
   }
   .text-subtitle {
-    @apply text-6xl;
+    @apply text-xl;
   }
   .text-subtitle-description {
-    @apply text-3xl leading-[2.8rem] max-md:text-base;
+    @apply text-3xl leading-[1.5rem] max-md:text-sm;
   }
   .text-service-description {
     @apply text-xl;
   }
-  .text-contact-title {
-    @apply text-xl max-md:text-sm;
-  }
-  .text-contact-detail {
-    @apply text-xl max-md:text-base;
-  }
+
   /* TEXT COLOR */
   .text-title-color {
     @apply text-white;

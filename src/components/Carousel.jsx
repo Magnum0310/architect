@@ -85,7 +85,8 @@ const Carousel = () => {
   const [imgIndex, setImgIndex] = useState(0);
   const track = useRef(null);
 
-  const isInView = useInView(track, { once: true, margin: "-100px 0px" });
+  // const isInView = useInView(track, { once: true, margin: "-100px 0px" });
+  const isInView = useInView(track);
 
   // NEXT BUTTON
   const next = () => {
@@ -121,58 +122,58 @@ const Carousel = () => {
   };
 
   return (
-    <>
+    <div
+      className="sticky top-0 flex h-screen w-full overflow-hidden "
+      ref={track}
+    >
       {/* TABLET */}
-      <div
-        className="sticky top-0 flex h-screen w-full overflow-hidden max-md:hidden "
-        ref={track}
-      >
+      <div className="relative flex overflow-hidden max-md:hidden" ref={track}>
         {/* PAGE NUMBER */}
         {isInView ? (
           <motion.div
-            className={`absolute top-14 z-10 h-[20vh] w-full `}
+            className={`absolute top-14 z-10 flex w-full items-center justify-center`}
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.5, ease: "easeInOut" }}
           >
+            {/* BUTTON LEFT */}
+            <motion.button
+              onClick={prev}
+              disabled={imgIndex == 0 ? true : false}
+              className={` h-16 min-w-16 font-bold text-white max-xl:h-10 ${imgIndex == 0 ? "opacity-45" : "opacity-1"}`}
+              style={{
+                backgroundImage: `url(${leftArrow})`,
+                backgroundSize: "contain",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+              whileTap={{ scale: 0.8 }}
+            ></motion.button>
             <PageTracker page={imgIndex + 1} />
+            {/* BUTTON RIGHT */}
+            <motion.button
+              onClick={next}
+              disabled={imgIndex == 4 ? true : false}
+              className={` h-16 min-w-16  font-bold text-white max-xl:h-10 ${imgIndex == 4 ? "opacity-45" : "opacity-1 "}`}
+              style={{
+                backgroundImage: `url(${rightArrow})`,
+                backgroundSize: "contain",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+              whileTap={{ scale: 0.8 }}
+            ></motion.button>
           </motion.div>
         ) : (
           <></>
         )}
-        {/* BUTTON RIGHT */}
-        <motion.button
-          onClick={next}
-          disabled={imgIndex == 4 ? true : false}
-          className={`absolute bottom-1/2 left-auto right-0 top-auto z-10 mr-10 h-20 min-w-16 font-bold text-white ${imgIndex == 4 ? "opacity-45" : "opacity-1 "}`}
-          style={{
-            backgroundImage: `url(${rightArrow})`,
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-          whileTap={{ scale: 0.8 }}
-        ></motion.button>
-        {/* BUTTON LEFT */}
-        <motion.button
-          onClick={prev}
-          disabled={imgIndex == 0 ? true : false}
-          className={`absolute bottom-1/2 left-0 right-auto top-auto z-10 ml-10 h-20 min-w-16 font-bold text-white ${imgIndex == 0 ? "opacity-45" : "opacity-1"}`}
-          style={{
-            backgroundImage: `url(${leftArrow})`,
-            backgroundSize: "contain",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-          whileTap={{ scale: 0.8 }}
-        ></motion.button>
+
         {/* CAROUSEL */}
         {images.map((image, index) => (
           <div key={index}>
             {/* {isInView ? ( */}
             <motion.div
-              ref={track}
-              className="grid aspect-video w-screen shrink-0 grid-cols-12 grid-rows-10 bg-primaryBackground"
+              className="relative grid h-full w-screen shrink-0 grid-cols-12 grid-rows-10  bg-primaryBackground"
               transition={TWEEN_OPTIONS}
               animate={{ translateX: x }}
             >
@@ -224,13 +225,13 @@ const Carousel = () => {
                 <div className="grid h-full grid-cols-7 grid-rows-6 border-2 border-solid border-goldLines bg-primaryBackground bg-opacity-45">
                   <div className="absolute flex h-full w-full flex-col justify-center">
                     <motion.div
-                      className="text-title relative z-10  ml-10 flex items-center"
+                      className="text-carousel-title relative z-10  ml-10 flex items-center"
                       variants={titleVariant}
                     >
                       <span className="text-title-color">{image.title}</span>
                     </motion.div>
                     <motion.div
-                      className="text-title relative z-10  ml-10 flex items-center"
+                      className="text-carousel-title relative z-10  ml-10 flex items-center"
                       variants={titleVariant}
                     >
                       <span className="text-title-color">{image.subTitle}</span>
@@ -248,56 +249,47 @@ const Carousel = () => {
       </div>
 
       {/* MOBILE */}
-      <div
-        className="sticky top-0 flex h-screen w-full overflow-hidden md:hidden"
-        ref={track}
-      >
+      <div className="flex overflow-hidden md:hidden">
         {/* PAGE NUMBER */}
         {isInView ? (
           <motion.div
-            className={`absolute bottom-[10%] z-10 h-6 w-full  `}
+            className={`absolute top-14 z-10 flex w-full items-center justify-center`}
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.5, ease: "easeInOut" }}
           >
+            {/* BUTTON LEFT */}
+            <motion.button
+              onClick={prev}
+              disabled={imgIndex == 0 ? true : false}
+              className={` h-16 min-w-16 font-bold text-white max-xl:h-10 ${imgIndex == 0 ? "opacity-45" : "opacity-1"}`}
+              style={{
+                backgroundImage: `url(${leftArrow})`,
+                backgroundSize: "contain",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+              whileTap={{ scale: 0.8 }}
+            ></motion.button>
             <PageTracker page={imgIndex + 1} />
+            {/* BUTTON RIGHT */}
+            <motion.button
+              onClick={next}
+              disabled={imgIndex == 4 ? true : false}
+              className={` h-16 min-w-16  font-bold text-white max-xl:h-10 ${imgIndex == 4 ? "opacity-45" : "opacity-1 "}`}
+              style={{
+                backgroundImage: `url(${rightArrow})`,
+                backgroundSize: "contain",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+              whileTap={{ scale: 0.8 }}
+            ></motion.button>
           </motion.div>
         ) : (
           <></>
         )}
 
-        {/* <div className=" absolute z-30 flex h-full w-full bg-red-500"> */}
-        {/* BUTTON RIGHT */}
-        <div className="justify-cente absolute bottom-[10%] left-auto right-0 top-auto z-10 flex items-center">
-          <motion.button
-            onClick={next}
-            disabled={imgIndex == 4 ? true : false}
-            className={` left-auto right-0 top-auto z-10 mr-5 h-10 min-w-16 font-bold text-white ${imgIndex == 4 ? "opacity-45" : "opacity-1 "}`}
-            style={{
-              backgroundImage: `url(${rightArrow})`,
-              backgroundSize: "contain",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
-            whileTap={{ scale: 0.8 }}
-          ></motion.button>
-        </div>
-        {/* BUTTON LEFT */}
-        <div className="absolute bottom-[10%] left-0 right-auto top-auto z-10 flex items-center justify-center bg-orange-500 ">
-          <motion.button
-            onClick={prev}
-            disabled={imgIndex == 0 ? true : false}
-            className={`absolute bottom-[10%] left-0 right-auto top-auto z-10 ml-5 h-10 min-w-16 font-bold text-white ${imgIndex == 0 ? "opacity-45" : "opacity-1"}`}
-            style={{
-              backgroundImage: `url(${leftArrow})`,
-              backgroundSize: "contain",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
-            whileTap={{ scale: 0.8 }}
-          ></motion.button>
-        </div>
-        {/* </div> */}
         {/* CAROUSEL */}
         {images.map((image, index) => (
           <div key={index} className="h-screen ">
@@ -378,7 +370,7 @@ const Carousel = () => {
         ))}
         {/* </div> */}
       </div>
-    </>
+    </div>
   );
 };
 
