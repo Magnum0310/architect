@@ -12,6 +12,7 @@ export default {
       colors: {
         primaryBackground: "#171C22",
         goldLines: "#DDA302",
+        backgroundGradient: "#5C7088",
       },
       fontFamily: {
         Coda: ["Coda", "system-ui"],

@@ -47,7 +47,7 @@ const ServicesPage = ({ track }) => {
   const shapeOpacity = useTransform(
     scrollYProgress,
     [trackerStart, trackerEnd],
-    [0, 0.45],
+    [0, 0.6],
     {
       ease: easeInOut,
     },
@@ -116,18 +116,10 @@ const ServicesPage = ({ track }) => {
                   {Details.design.subTitle}
                 </span>
               </motion.div>
-              {/* SERVICE SUBTITLE */}
-              {/* Need to copy */}
-              <motion.div
-                className="text-subtitle-description-color service-content z-10 col-start-1 col-end-4 row-start-4 row-end-5 flex justify-center font-Fahkwang max-xl:hidden"
-                style={{ y: yDescription }}
-              >
-                <span>{Details.design.descriptionTitle}</span>
-              </motion.div>
               {/* SERVICE DESCRIPTION */}
               {/* Neet to copy */}
               <motion.div
-                className="text-subtitle-description-color service-content z-10 col-start-4 col-end-7 row-start-4 row-end-7 font-Fahkwang max-xl:col-start-2"
+                className="text-subtitle-description-color service-content z-10 col-start-2 col-end-7 row-start-4 row-end-7 flex items-center font-Fahkwang"
                 style={{ y: yDescription }}
               >
                 <span>{Details.design.description}</span>

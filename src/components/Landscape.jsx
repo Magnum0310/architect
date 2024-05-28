@@ -43,7 +43,6 @@ const ServicesPage = ({ track }) => {
   const imageScroll = useTransform(
     scrollYProgress,
     [0, 0.4, 0.6],
-    // [0, 0.35, 0.51],
     [0, 0, -1000],
     { ease: easeInOut },
   );
@@ -51,7 +50,7 @@ const ServicesPage = ({ track }) => {
   const shapeOpacity = useTransform(
     scrollYProgress,
     [trackerStart, trackerEnd],
-    [0, 0.45],
+    [0, 0.6],
     {
       ease: easeInOut,
     },
@@ -119,16 +118,9 @@ const ServicesPage = ({ track }) => {
                 {Details.landscape.subTitle}
               </span>
             </motion.div>
-            {/* SERVICE SUBTITLE */}
-            <motion.div
-              className="text-subtitle-description-color service-content z-10 col-start-1 col-end-4 row-start-4 row-end-5 flex  justify-center font-Fahkwang max-xl:hidden"
-              style={{ y: yDescription, opacity: yOpacity }}
-            >
-              <span>{Details.landscape.descriptionTitle}</span>
-            </motion.div>
             {/* SERVICE DESCRIPTION */}
             <motion.div
-              className="text-subtitle-description-color service-content z-10 col-start-4 col-end-7 row-start-4 row-end-7 font-Fahkwang max-xl:col-start-2"
+              className="text-subtitle-description-color service-content z-10 col-start-2 col-end-7 row-start-4 row-end-7 flex items-center font-Fahkwang"
               style={{ y: yDescription, opacity: yOpacity }}
             >
               <span>{Details.landscape.description}</span>
@@ -151,7 +143,7 @@ const ServicesPage = ({ track }) => {
       {/* MOBILE */}
       <div className=" bg-primaryBackground max-md:h-full max-md:w-full md:hidden">
         {/* MAIN GRID */}
-        <motion.div className="max-md:flex max-md:h-full max-md:w-full max-md:flex-col max-md:justify-center md:grid md:grid-cols-12 md:grid-rows-10 ">
+        <motion.div className="max-md:flex max-md:h-full max-md:w-full max-md:flex-col max-md:justify-center md:grid md:grid-cols-12 md:grid-rows-10">
           {/* IMAGE */}
           <motion.div className="relative h-1/2 w-full md:hidden">
             <motion.div

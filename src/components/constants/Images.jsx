@@ -5,7 +5,7 @@ import Permit from "../../assets/buildingPermits.jpg";
 import Construction from "../../assets/construction.jpg";
 import Contact from "../../assets/contact.jpg";
 import Design from "../../assets/design.jpg";
-import Facebook from "../../assets/facebook.svg";
+import Facebook from "../../assets/Facebook.svg";
 import Logo from "../../assets/DOC_Logo.svg";
 import Furniture from "../../assets/furniture.jpg";
 import Interior from "../../assets/interior.jpg";

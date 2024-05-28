@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "../components/constants/Images";
+import Facebook from "../assets/Facebook.svg";
 
 const primaryVariant = {
   initial: { opacity: 1 },
@@ -67,7 +68,7 @@ const titleTextVariant = {
 };
 
 const textVariant = {
-  initial: { x: -500 },
+  initial: { x: -600 },
   animate: {
     x: 0,
     transition: {
@@ -81,7 +82,6 @@ const textVariant = {
 const PageTemplate = () => {
   const divRef = useRef(null);
   const isInView = useInView(divRef, {
-    // once: true,
     margin: "0px 100px -300px 0px",
   });
   return (
@@ -105,7 +105,7 @@ const PageTemplate = () => {
           {isInView ? (
             <>
               {/* CONTACT DETAILS */}
-              <motion.div className="col-start-2 col-end-8 row-start-2 row-end-10 grid overflow-hidden px-[2rem] py-[2rem] ">
+              <motion.div className="col-start-2 col-end-8 row-start-2 row-end-10 grid overflow-hidden  px-[2rem] py-[2rem]">
                 <motion.div
                   className="flex flex-col gap-5 "
                   variants={titleVariant}
@@ -113,7 +113,7 @@ const PageTemplate = () => {
                   animate="animate"
                 >
                   <motion.div
-                    className=""
+                    className="flex flex-col gap-10 "
                     variants={defaultVariant}
                     initial="initial"
                     animate="animate"
@@ -133,88 +133,108 @@ const PageTemplate = () => {
                       of experts.
                     </motion.div>
                   </motion.div>
-                  <div className="text-subtitle-color">
-                    <div className="flex flex-col gap-2">
-                      <motion.div
-                        className="text-contact-opacity text-contact-title"
-                        variants={textVariant}
-                      >
-                        ARCHITECT
-                      </motion.div>
-                      <motion.div
-                        variants={textVariant}
-                        className="text-contact-detail"
-                      >
-                        Dave O. Candelario
-                      </motion.div>
+                  <div className="flex h-full flex-col justify-center gap-5">
+                    <div className="text-subtitle-color">
+                      <div className="flex flex-col">
+                        <motion.div
+                          className="text-contact-opacity text-contact-title"
+                          variants={textVariant}
+                        >
+                          ARCHITECT
+                        </motion.div>
+                        <motion.div
+                          variants={textVariant}
+                          className="text-contact-detail"
+                        >
+                          Dave O. Candelario
+                        </motion.div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="text-service-description text-subtitle-color">
-                    <div className="flex flex-col gap-2">
-                      <motion.div
-                        className="text-contact-opacity text-contact-title"
-                        variants={textVariant}
-                        transition={{ delay: titleDelay }}
-                      >
-                        CONTACTS
-                      </motion.div>
-                      <motion.div
-                        className="text-contact-detail"
-                        variants={textVariant}
-                        transition={{ delay: detailDelay }}
-                      >
-                        09777538014
-                      </motion.div>
-                      <motion.div
-                        className="text-contact-detail"
-                        variants={textVariant}
-                        transition={{ delay: detailDelay }}
-                      >
-                        09616397716
-                      </motion.div>
+                    <div className="text-service-description text-subtitle-color">
+                      <div className="flex flex-col ">
+                        <motion.div
+                          className="text-contact-opacity text-contact-title"
+                          variants={textVariant}
+                          transition={{ delay: titleDelay }}
+                        >
+                          CONTACTS
+                        </motion.div>
+                        <motion.div
+                          className="text-contact-detail"
+                          variants={textVariant}
+                          transition={{ delay: detailDelay }}
+                        >
+                          09777538014
+                        </motion.div>
+                        <motion.div
+                          className="text-contact-detail"
+                          variants={textVariant}
+                          transition={{ delay: detailDelay }}
+                        >
+                          09616397716
+                        </motion.div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="text-service-description text-subtitle-color">
-                    <div className="flex flex-col gap-2">
-                      <motion.div
-                        className="text-contact-opacity text-contact-title"
-                        variants={textVariant}
-                        transition={{ delay: titleDelay }}
-                      >
-                        EMAIL
-                      </motion.div>
-                      <motion.div
-                        className="text-contact-detail"
-                        variants={textVariant}
-                        transition={{ delay: detailDelay }}
-                      >
-                        dav08veolarte@gmail.com
-                      </motion.div>
+                    <div className="text-service-description text-subtitle-color">
+                      <div className="flex flex-col">
+                        <motion.div
+                          className="text-contact-opacity text-contact-title"
+                          variants={textVariant}
+                          transition={{ delay: titleDelay }}
+                        >
+                          EMAIL
+                        </motion.div>
+                        <motion.div
+                          className="text-contact-detail"
+                          variants={textVariant}
+                          transition={{ delay: detailDelay }}
+                        >
+                          dav08veolarte@gmail.com
+                        </motion.div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="text-service-description text-subtitle-color">
-                    <div className="flex flex-col gap-2">
-                      <motion.div
-                        className="text-contact-opacity text-contact-title"
-                        variants={textVariant}
-                        transition={{ delay: titleDelay }}
-                      >
-                        LOCATION
-                      </motion.div>
-                      <motion.div
-                        className="text-contact-detail"
-                        variants={textVariant}
-                        transition={{ delay: detailDelay }}
-                      >
-                        Brgy. Sampaloc Bolinao Pangasinan
-                      </motion.div>
+                    <div className="text-service-description text-subtitle-color">
+                      <div className="flex flex-col ">
+                        <motion.div
+                          className="text-contact-opacity text-contact-title"
+                          variants={textVariant}
+                          transition={{ delay: titleDelay }}
+                        >
+                          LOCATION
+                        </motion.div>
+                        <motion.div
+                          className="text-contact-detail"
+                          variants={textVariant}
+                          transition={{ delay: detailDelay }}
+                        >
+                          Brgy. Sampaloc Bolinao Pangasinan
+                        </motion.div>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
               </motion.div>
+              {/* FACEBOOK */}
+              <motion.div
+                variants={titleVariant}
+                initial="initial"
+                animate="animate"
+                className="relative z-40 col-span-2 col-start-6 row-span-2 row-start-7 flex h-full w-full place-items-center justify-center  py-16 3xl:py-10 "
+              >
+                <motion.div
+                  variants={titleTextVariant}
+                  className="relative h-full w-full"
+                  style={{
+                    backgroundImage: `url("${Facebook}")`,
+                    backgroundPosition: "center",
+                    backgroundSize: "contain",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                ></motion.div>
+              </motion.div>
               {/* BACKGROUND IMAGE */}
               <motion.div
-                className="col-start-8 col-end-13 row-start-2 row-end-10 bg-violet-500 "
+                className="col-start-8 col-end-13 row-start-2 row-end-10 "
                 style={{
                   backgroundImage: `url(${Image.Contact})`,
                   backgroundSize: "cover",
@@ -251,20 +271,8 @@ const PageTemplate = () => {
           ) : (
             <></>
           )}
-          {/* FACEBOOK */}
-          <div className="relative z-40 col-span-4 col-start-5 row-span-4 row-start-6 flex place-items-center justify-center py-28 ">
-            <div
-              className="relative h-full w-full"
-              style={{
-                backgroundImage: `url(${Image.Facebook})`,
-                backgroundPosition: "center",
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-              }}
-            ></div>
-          </div>
           {/* CONTACT FOOTER */}
-          <div className="text-service-description relative col-start-1 col-end-13 row-start-9 row-end-9 flex h-1/2 w-full translate-y-full justify-center bg-white bg-opacity-100">
+          <div className="text-service-description relative z-20 col-start-1 col-end-13 row-start-9 row-end-9 flex h-1/2 w-full translate-y-full justify-center bg-white bg-opacity-100">
             <div className="relative flex w-1/4 place-content-center items-center">
               <div
                 className="relative flex h-full basis-[30%]"
@@ -288,7 +296,7 @@ const PageTemplate = () => {
           <div className="relative z-30 border-r-4 border-solid border-goldLines max-lg:col-start-1 max-lg:col-end-2 max-lg:row-span-4 max-lg:row-start-1 max-lg:w-1/2"></div>
           <div className="relative z-20  bg-primaryBackground bg-opacity-45 max-lg:col-start-1 max-lg:col-end-2 max-lg:row-span-4 max-lg:row-start-1 max-lg:w-full"></div>
           <div className="text-page-title-color relative z-20 flex items-center justify-center border-b-4 border-goldLines bg-primaryBackground bg-opacity-45 max-lg:col-span-6 max-lg:col-start-1 max-lg:row-start-1 max-lg:h-1/4 max-lg:text-base">
-            CONTACT
+            {/* CONTACT */}
           </div>
           {/* CONTACT INFO BOX */}
           {isInView ? (
@@ -413,9 +421,27 @@ const PageTemplate = () => {
                   </div>
                 </motion.div>
               </motion.div>
+              {/* FACEBOOK */}
+              <motion.div
+                variants={titleVariant}
+                initial="initial"
+                animate="animate"
+                className="relative z-10 col-span-2 col-start-5 row-start-4 flex h-full w-full place-items-center justify-center py-14 "
+              >
+                <motion.div
+                  className="relative h-full w-full "
+                  variants={titleTextVariant}
+                  style={{
+                    backgroundImage: `url("${Facebook}")`,
+                    backgroundSize: "contain",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                ></motion.div>
+              </motion.div>
               {/* BACKGROUND IMAGE */}
               <motion.div
-                className="col-span-6 col-start-1 row-span-4 row-start-1  bg-violet-500 "
+                className="col-span-6 col-start-1 row-span-4 row-start-1 "
                 style={{
                   backgroundImage: `url(${Image.Contact})`,
                   backgroundSize: "cover",
@@ -452,18 +478,7 @@ const PageTemplate = () => {
           ) : (
             <></>
           )}
-          {/* FACEBOOK */}
-          <div className="relative z-10 col-span-2 col-start-5 row-start-4 flex place-items-center justify-center  py-14 ">
-            <div
-              className="relative h-full w-full"
-              style={{
-                backgroundImage: `url(${Image.Facebook})`,
-                backgroundPosition: "center",
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-              }}
-            ></div>
-          </div>
+
           {/* CONTACT FOOTER */}
           <div className="text-service-description relative col-span-6 col-start-1 row-span-1 row-start-5 flex h-full w-full justify-center bg-white">
             <div className="relative flex h-full w-full ">

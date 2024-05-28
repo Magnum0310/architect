@@ -1,26 +1,65 @@
 import React from "react";
 import Architect from "../assets/architect.jpg";
 import Logo from "../assets/DOC_Logo.svg";
+import Image from "../components/constants/Images";
+import { motion } from "framer-motion";
+
+const primaryVariant = {
+  initial: { opacity: 1 },
+  animate: {
+    opacity: 1,
+    transition: {
+      type: "tween",
+      delayChildren: 0,
+      staggerChildren: 0.1,
+      ease: "easeInOut",
+    },
+  },
+};
+
+const titleTextVariant = {
+  initial: { y: 20, opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "tween",
+      ease: "linear",
+      duration: 0.2,
+    },
+  },
+};
+
+const textVariant = {
+  initial: { x: -700 },
+  animate: {
+    x: 0,
+    transition: {
+      type: "tween",
+      ease: "anticipate",
+      duration: 2.5,
+    },
+  },
+};
 
 const PageTemplate = () => {
   return (
     <div className="grid min-h-screen grid-cols-12 grid-rows-10 max-md:w-screen max-md:grid-cols-6 max-md:grid-rows-5 max-md:gap-0">
       {/* TABLET */}
       {/* BORDER LINES */}
-      <div className="col-start-1 col-end-2 row-start-1 row-end-2 flex items-end justify-center border-r-4 border-solid border-goldLines max-md:hidden"></div>
-      <div className="z-20 col-start-1 col-end-1 row-start-2 row-end-11 border-r-4 border-solid border-goldLines max-md:hidden"></div>
+      <div className="z-20 col-start-1 col-end-1 row-start-1 row-end-11 border-r-4 border-solid border-goldLines max-md:hidden"></div>
       {/* WHITE BACKGROUND */}
-      <div className="col-start-1 col-end-13 row-start-3 row-end-8 max-md:hidden">
+      <div className="z-10 col-start-1 col-end-13 row-span-10 row-start-1 max-md:hidden">
         <div className="relative flex h-full w-full flex-col">
-          <div className="relative h-full w-full flex-1 bg-white bg-cover bg-center "></div>
+          <div className="relative h-full w-full flex-1 bg-gradient-to-tr from-primaryBackground/45 to-backgroundGradient/45 "></div>
         </div>
       </div>
       {/* IMAGE BACKGROUND */}
-      <div className="col-span-12 col-start-1 row-start-6 row-end-11 max-md:hidden">
+      <div className="col-span-12 col-start-1 row-span-10 row-start-1">
         <div
-          className="relative h-full w-full bg-[center_bottom_-5rem]"
+          className="relative h-full w-full"
           style={{
-            backgroundImage: `url(${Architect})`,
+            backgroundImage: `url(${Image.Architect})`,
             backgroundSize: "cover",
             backgroundPosition: "",
             backgroundRepeat: "no-repeat",
@@ -28,40 +67,83 @@ const PageTemplate = () => {
         ></div>
       </div>
       {/* LOGO */}
-      <div className="z-10 col-start-2 col-end-12 row-start-4 row-end-8 grid h-full w-full max-md:hidden">
-        <div className="grid grid-cols-7 grid-rows-4">
+      <motion.div
+        className="z-10 col-span-3 col-start-3 row-start-4 row-end-8 grid h-full w-full overflow-hidden  max-md:hidden"
+        variants={primaryVariant}
+        animate="animate"
+        initial="initial"
+      >
+        <div className=" h-full w-full">
           <div
-            className="col-start-1 col-end-4 row-start-1 row-end-5 h-full w-full "
+            className=" h-full w-full "
             style={{
-              backgroundImage: `url(${Logo})`,
-              backgroundSize: "cover",
+              backgroundImage: `url(${Image.Logo})`,
+              backgroundSize: "contain",
               backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              scale: "150%",
             }}
           ></div>
-          <div className="text-title relative col-span-4 col-start-4 row-start-1 row-end-5 flex flex-col justify-center ">
-            <div className="relative flex h-full w-full flex-col justify-center">
-              <div className="relative   tracking-wide">Architectural</div>
-              <div className="relative  tracking-wide">Services</div>
-            </div>
-          </div>
         </div>
-      </div>
+      </motion.div>
+      {/* PAGE TITLE */}
+      <motion.div
+        className="w-ful z-10 col-span-6 col-start-6 row-start-4 row-end-8 h-full overflow-hidden max-md:hidden"
+        variants={primaryVariant}
+        animate="animate"
+        initial="initial"
+      >
+        <div className="relative ml-10 grid h-full w-full grid-cols-6 grid-rows-5">
+          {/* <div className="text-title relative col-span-6 col-start-1 row-span-4 row-start-1 h-full w-full flex-col justify-center"> */}
+          <motion.div
+            className="text-title relative col-span-6 col-start-1 row-span-2 row-start-1 flex h-full w-full items-end tracking-wide text-white"
+            variants={textVariant}
+          >
+            Architectural
+          </motion.div>
+          <motion.div
+            className="text-title relative col-span-6 col-start-1 row-span-2 row-start-3 flex h-full w-full items-start tracking-wide text-white "
+            variants={textVariant}
+          >
+            Services
+          </motion.div>
+          <motion.div
+            className="relative col-span-6 col-start-1 row-start-5 flex items-center  justify-center text-base"
+            variants={textVariant}
+          >
+            <div className="relative flex h-1/2 w-full flex-col justify-center text-lg ">
+              <motion.a
+                className="relative flex h-full w-max items-center rounded-full bg-white px-5 tracking-wider hover:cursor-pointer hover:text-goldLines 
+                "
+                href="#service"
+                whileHover={{
+                  scale: 1.01,
+                  y: -0.5,
+                }}
+              >
+                EXPLORE OUR SERVICES
+              </motion.a>
+            </div>
+          </motion.div>
+        </div>
+        {/* </div> */}
+      </motion.div>
 
       {/* MOBILE */}
       <div className="relative z-30 border-r-4 border-solid border-goldLines max-md:col-start-1 max-md:col-end-2 max-md:row-span-6 max-md:row-start-1 max-md:w-1/2 md:hidden"></div>
       <div className="col-start-1 col-end-2 row-start-1 row-end-2 flex items-end justify-center border-r-4 border-solid border-goldLines md:hidden"></div>
       {/* WHITE BACKGROUND */}
-      <div className="h-full w-full max-md:absolute md:hidden">
+      <div className="z-10 h-full w-full max-md:absolute md:hidden">
         <div className="relative h-full w-full">
           <div className="relative h-screen w-full bg-white"></div>
         </div>
       </div>
       {/* BACKGROUND IMAGE */}
-      <div className="max-md:col-span-6 max-md:col-start-1 max-md:row-span-2 max-md:row-start-4 md:hidden">
+      <div className="max-md:col-span-6 max-md:col-start-1 max-md:row-span-5 max-md:row-start-1 md:hidden">
         <div
-          className="relative h-full w-full flex-1 md:bg-[center_bottom_-5rem]"
+          className="relative h-full w-full"
           style={{
-            backgroundImage: `url(${Architect})`,
+            backgroundImage: `url(${Image.Architect})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -69,22 +151,23 @@ const PageTemplate = () => {
         ></div>
       </div>
       {/* LOGO */}
-      <div className=" z-10 h-full w-full max-md:col-span-6 max-md:col-start-1 max-md:row-span-3 max-md:row-start-1 md:hidden">
+      <div className=" z-10 h-full w-full max-md:col-span-6 max-md:col-start-1 max-md:row-span-5 max-md:row-start-1 md:hidden">
         <div className=" relative h-full w-full max-md:grid max-md:grid-cols-6 max-md:grid-rows-3">
           <div
-            className=" relative col-span-4 col-start-1 row-span-2 row-start-1 h-[100%] w-full  bg-[center_right_-1.5rem] "
+            className=" relative col-span-6 col-start-1 row-span-2 row-start-1 h-[100%] w-full"
             style={{
-              backgroundImage: `url(${Logo})`,
+              backgroundImage: `url(${Image.Logo})`,
               backgroundSize: "contain",
-              backgroundPosition: "",
+              backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
+              scale: "80%",
             }}
           ></div>
-          <div className="col-start-2 col-end-6 row-span-2 row-start-2 flex w-full flex-col items-center justify-center pt-10">
-            <span className="text-title w-full tracking-wider max-md:text-right max-md:tracking-normal">
+          <div className="col-start-2 col-end-6 row-span-2 row-start-2 flex h-1/2 w-full flex-col items-center justify-end ">
+            <span className="text-title w-full  tracking-wider max-md:text-center max-md:tracking-normal">
               Architectural
             </span>
-            <span className="text-title w-full tracking-wider max-md:text-right  max-md:tracking-normal">
+            <span className="text-title w-full tracking-wider max-md:text-center  max-md:tracking-normal">
               Services
             </span>
           </div>

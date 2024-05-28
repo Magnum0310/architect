@@ -37,23 +37,23 @@ function App() {
   return (
     <div className="relative bg-primaryBackground font-Coda">
       {/* NAV */}
-      <div className="absolute grid min-h-screen w-full grid-cols-12 grid-rows-10 border-b-4 border-solid border-goldLines max-md:hidden">
-        <div className="absolute top-16 w-full border-b-4 border-solid border-goldLines">
+      <div className="absolute z-20 flex w-full pt-5 max-md:hidden">
+        <div className="h-full w-full ">
           <div className="grid h-full w-full grid-cols-6 text-white">
             <a
-              className="col-start-4 col-end-5 flex items-end justify-start"
+              className="col-start-4 col-end-5 flex items-end justify-start hover:text-goldLines"
               href="#about"
             >
               ABOUT US
             </a>
             <a
-              className="col-start-5 col-end-6 flex items-end justify-start"
+              className="col-start-5 col-end-6 flex items-end justify-start hover:text-goldLines"
               href="#service"
             >
               SERVICES
             </a>
             <a
-              className="col-start-6 col-end-7 flex items-end justify-start"
+              className="col-start-6 col-end-7 flex items-end justify-start hover:text-goldLines"
               href="#contact"
             >
               CONTACT US
@@ -70,7 +70,7 @@ function App() {
         <About />
       </div>
       {/* SERVICES SECTION */}
-      <div className="h-screen max-md:h-[70vh]" id="service">
+      <div className="h-[80vh] max-md:h-[50vh]" id="service">
         <Services />
       </div>
       <div className="max-md:h-[550vh] md:min-h-[1300vh]" ref={track}>
@@ -91,7 +91,7 @@ function App() {
         </div>
       </div>
       {/* OTHER SERVICES SECTION */}
-      <div className="h-[70vh]">
+      <div className="h-[50vh]">
         <OtherServices />
       </div>
       <div className="min-h-[200vh] text-white max-md:relative">

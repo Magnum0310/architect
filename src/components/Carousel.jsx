@@ -1,38 +1,34 @@
 import { useState, useRef } from "react";
-import Permit from "../assets/buildingPermits.jpg";
-import Stainless from "../assets/stainless.jpg";
-import Aluminum from "../assets/aluminum.jpg";
-import Furniture from "../assets/furniture.jpg";
-import Window from "../assets/window.jpg";
-import { motion, useInView, useScroll, useMotionValue } from "framer-motion";
+import { motion, useInView, useMotionValue } from "framer-motion";
 import leftArrow from "../assets/leftArrow.svg";
 import rightArrow from "../assets/rightArrow.svg";
 import PageTracker from "./PageTracker";
+import Image from "../components/constants/Images";
 
 const images = [
   {
     id: 1,
-    image: Permit,
+    image: Image.Permit,
     title: "Building Permit",
     subTitle: "Documents",
     full: "Building Permit Documents",
   },
   {
     id: 2,
-    image: Stainless,
+    image: Image.Stainless,
     title: "Stainless",
     subTitle: "Works",
     full: "Stainless Works",
   },
   {
     id: 3,
-    image: Aluminum,
+    image: Image.Aluminum,
     title: "Aluminum",
     subTitle: "Works",
     full: "Aluminum Works",
   },
-  { id: 4, image: Furniture, title: "Furnitures", full: "Furnitures" },
-  { id: 5, image: Window, title: "Window Blinds", full: "WIndow Blinds" },
+  { id: 4, image: Image.Furniture, title: "Furnitures", full: "Furnitures" },
+  { id: 5, image: Image.Window, title: "Window Blinds", full: "WIndow Blinds" },
 ];
 
 const primaryVariant = {
@@ -134,7 +130,7 @@ const Carousel = () => {
             className={`absolute top-14 z-10 flex w-full items-center justify-center`}
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.5, ease: "easeInOut" }}
+            transition={{ delay: 1, duration: 0.5, ease: "easeInOut" }}
           >
             {/* BUTTON LEFT */}
             <motion.button
@@ -142,7 +138,7 @@ const Carousel = () => {
               disabled={imgIndex == 0 ? true : false}
               className={` h-16 min-w-16 font-bold text-white max-xl:h-10 ${imgIndex == 0 ? "opacity-45" : "opacity-1"}`}
               style={{
-                backgroundImage: `url(${leftArrow})`,
+                backgroundImage: `url("${leftArrow}")`,
                 backgroundSize: "contain",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -156,7 +152,7 @@ const Carousel = () => {
               disabled={imgIndex == 4 ? true : false}
               className={` h-16 min-w-16  font-bold text-white max-xl:h-10 ${imgIndex == 4 ? "opacity-45" : "opacity-1 "}`}
               style={{
-                backgroundImage: `url(${rightArrow})`,
+                backgroundImage: `url("${rightArrow}")`,
                 backgroundSize: "contain",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -174,8 +170,17 @@ const Carousel = () => {
             {/* {isInView ? ( */}
             <motion.div
               className="relative grid h-full w-screen shrink-0 grid-cols-12 grid-rows-10  bg-primaryBackground"
+              drag="x"
+              dragConstraints={{
+                left: 0,
+                right: 0,
+              }}
+              style={{
+                x: dragX,
+              }}
               transition={TWEEN_OPTIONS}
               animate={{ translateX: x }}
+              onDragEnd={onDragEnd}
             >
               <motion.div
                 className="col-start-4 col-end-12 row-start-3 row-end-10 shrink-0"
@@ -222,7 +227,7 @@ const Carousel = () => {
                 animate={imgIndex + 1 == image.id ? "animate" : ""}
                 initial="initial"
               >
-                <div className="grid h-full grid-cols-7 grid-rows-6 border-2 border-solid border-goldLines bg-primaryBackground bg-opacity-45">
+                <div className="grid h-full grid-cols-7 grid-rows-6 border-2 border-l-2 border-solid border-goldLines bg-primaryBackground bg-opacity-45">
                   <div className="absolute flex h-full w-full flex-col justify-center">
                     <motion.div
                       className="text-carousel-title relative z-10  ml-10 flex items-center"
@@ -264,7 +269,7 @@ const Carousel = () => {
               disabled={imgIndex == 0 ? true : false}
               className={` h-16 min-w-16 font-bold text-white max-xl:h-10 ${imgIndex == 0 ? "opacity-45" : "opacity-1"}`}
               style={{
-                backgroundImage: `url(${leftArrow})`,
+                backgroundImage: `url("${leftArrow}")`,
                 backgroundSize: "contain",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -278,7 +283,7 @@ const Carousel = () => {
               disabled={imgIndex == 4 ? true : false}
               className={` h-16 min-w-16  font-bold text-white max-xl:h-10 ${imgIndex == 4 ? "opacity-45" : "opacity-1 "}`}
               style={{
-                backgroundImage: `url(${rightArrow})`,
+                backgroundImage: `url("${rightArrow}")`,
                 backgroundSize: "contain",
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
@@ -295,7 +300,7 @@ const Carousel = () => {
           <div key={index} className="h-screen ">
             <motion.div
               ref={track}
-              className="grid h-full w-screen shrink-0 cursor-grab bg-green-500 active:cursor-grabbing max-md:grid-cols-6 max-md:grid-rows-4"
+              className="grid h-full w-screen shrink-0 cursor-grab active:cursor-grabbing max-md:grid-cols-6 max-md:grid-rows-4"
               drag="x"
               dragConstraints={{
                 left: 0,
@@ -369,6 +374,11 @@ const Carousel = () => {
           </div>
         ))}
         {/* </div> */}
+      </div>
+
+      {/* BORDER LINE */}
+      <div className="absolute grid h-full w-1/4 grid-cols-3 grid-rows-10 ">
+        <div className="col-start-1 col-end-2 row-start-1 row-end-11 border-r-4 border-goldLines"></div>
       </div>
     </div>
   );
