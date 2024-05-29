@@ -79,7 +79,7 @@ const textVariant = {
 
 const PageTemplate = () => {
   return (
-    <div className="grid min-h-screen grid-cols-12 grid-rows-10 max-md:w-screen max-md:grid-cols-6 max-md:grid-rows-5 max-md:gap-0">
+    <div className="grid grid-cols-12 grid-rows-10 max-md:h-[100dvh] max-md:w-screen max-md:grid-cols-6 max-md:grid-rows-5 max-md:gap-0 md:min-h-screen">
       {/* TABLET */}
       {/* BORDER LINES */}
       <div className="z-20 col-start-1 col-end-1 row-start-1 row-end-11 border-r-4 border-solid border-goldLines max-md:hidden"></div>
@@ -173,7 +173,7 @@ const PageTemplate = () => {
       ></motion.div>
       {/* <div className="col-start-1 col-end-2 row-start-1 row-end-2 flex items-end justify-center border-r-4 border-solid border-goldLines md:hidden"></div> */}
       {/* GRADIENT BACKGROUND */}
-      <div className="z-10 h-full w-full max-md:absolute md:hidden">
+      <div className="z-10 col-span-6 col-start-1 row-span-5 row-start-1 h-full w-full md:hidden">
         <div className="relative h-full w-full">
           <div className="relative h-screen w-full bg-gradient-to-tr from-primaryBackground/45 to-backgroundGradient/45"></div>
         </div>

@@ -305,17 +305,19 @@ const PageTemplate = () => {
                         >
                           FACEBOOK PAGE
                         </motion.div>
-                        <motion.div
-                          className="h-social-media flex  w-full"
-                          variants={contactTextVariant}
-                          transition={{ delay: detailDelay }}
-                          style={{
-                            backgroundImage: `url("${Facebook}")`,
-                            backgroundSize: "contain",
-                            backgroundPosition: "left",
-                            backgroundRepeat: "no-repeat",
-                          }}
-                        ></motion.div>
+                        <a href="https://facebook.com">
+                          <motion.div
+                            className="h-social-media flex  w-full"
+                            variants={contactTextVariant}
+                            transition={{ delay: detailDelay }}
+                            style={{
+                              backgroundImage: `url("${Facebook}")`,
+                              backgroundSize: "contain",
+                              backgroundPosition: "left",
+                              backgroundRepeat: "no-repeat",
+                            }}
+                          ></motion.div>
+                        </a>
                       </div>
                     </div>
                   </div>
