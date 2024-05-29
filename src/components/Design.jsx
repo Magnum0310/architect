@@ -1,4 +1,11 @@
-import { useScroll, motion, useTransform, easeInOut } from "framer-motion";
+import {
+  useScroll,
+  motion,
+  useTransform,
+  easeInOut,
+  useInView,
+} from "framer-motion";
+import { useRef } from "react";
 import Details from "../components/constants/details.json";
 import Image from "../components/constants/Images";
 
@@ -76,6 +83,33 @@ const ServicesPage = ({ track }) => {
       ease: easeInOut,
     },
   );
+  const opacityVariant = {
+    initial: { opacity: 0 },
+    animate: {
+      opacity: 1,
+      transition: {
+        duration: 2,
+        staggerChildren: 0.3,
+        delayChildren: 0.3,
+        ease: "easeInOut",
+      },
+    },
+  };
+  const sectionVariant = {
+    initial: { opacilty: 0 },
+    animate: { opacity: 1 },
+  };
+
+  const divRef = useRef(null);
+  const mobileRef = useRef(null);
+  const isInView = useInView(divRef, {
+    once: true,
+    margin: "0px 0px 0px 0px",
+  });
+  const mobileInView = useInView(mobileRef, {
+    once: true,
+    margin: "0px 100px -300px 0px",
+  });
 
   return (
     <>
@@ -94,7 +128,7 @@ const ServicesPage = ({ track }) => {
           </motion.div>
           {/* WRAPPER */}
           {/* Need to copy to other services */}
-          <div className="col-start-4 col-end-11 row-start-3 row-end-10 max-lg:col-start-3 max-lg:col-end-12">
+          <motion.div className="col-start-4 col-end-11 row-start-3 row-end-10 max-lg:col-start-3 max-lg:col-end-12">
             <div className="relative grid h-full grid-cols-7 grid-rows-7 ">
               {/* GRAY RECTANGLE */}
               <motion.div
@@ -134,9 +168,10 @@ const ServicesPage = ({ track }) => {
                 style={{ opacity: hightLightOpacity, x: bottomHighlight }}
               ></motion.div>
             </div>
-          </div>
+          </motion.div>
+
           {/* BORDER LINE */}
-          <div className="z-10 col-start-1 col-end-2 row-start-1 row-end-11 border-r-4 border-goldLines"></div>
+          <div className="relative z-10 col-start-1 col-end-2 row-start-1 row-end-11 border-r-4 border-goldLines"></div>
         </motion.div>
       </div>
 

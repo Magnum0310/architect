@@ -2,87 +2,26 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "../components/constants/Images";
 import Facebook from "../assets/Facebook.svg";
+import Contacts from "../components/constants/Contacts";
+import Variants from "../components/constants/Variants";
 
-const primaryVariant = {
-  initial: { opacity: 1 },
-  animate: {
-    opacity: 1,
-    transition: {
-      type: "tween",
-      delayChildren: 1.5,
-      staggerChildren: 0.1,
-      ease: "easeInOut",
-    },
-  },
-};
-
-const titleVariant = {
-  initial: { y: 0, opacity: 1 },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      delayChildren: 0,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const defaultVariant = {
-  initial: { opacity: 1 },
-  animate: {
-    y: 1,
-    transition: {
-      duration: 0.2,
-      delayChildren: 0.1,
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const shapeVariant = {
-  initial: {
-    scaleX: 1,
-  },
-  animate: {
-    scaleX: 0,
-  },
-};
+const {
+  contactPrimaryVariant,
+  contactsDetailsVariant,
+  contactDefaultVariant,
+  shapeVariant,
+  contactTitleTextVariant,
+  contactTextVariant,
+} = Variants;
 
 const titleDelay = 0;
 const detailDelay = 0.5;
-const imageDelay = 1.5;
-const imageStagger = 0.1;
-
-const titleTextVariant = {
-  initial: { y: 20, opacity: 0 },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "tween",
-      ease: "linear",
-      duration: 0.2,
-    },
-  },
-};
-
-const textVariant = {
-  initial: { x: -600 },
-  animate: {
-    x: 0,
-    transition: {
-      type: "tween",
-      ease: "anticipate",
-      duration: 1,
-    },
-  },
-};
 
 const PageTemplate = () => {
   const divRef = useRef(null);
   const isInView = useInView(divRef, {
-    margin: "0px 100px -300px 0px",
+    // margin: "0px 100px -300px 0px",
+    margin: "0px 0px 0px 0px",
   });
   return (
     <div
@@ -93,11 +32,7 @@ const PageTemplate = () => {
       <div className=" relative col-span-12 col-start-1 row-span-9 row-start-1 max-lg:hidden">
         <div className="relative grid h-screen grid-cols-12 grid-rows-9 ">
           <div className="text-page-title-color col-start-1 col-end-2 row-start-1 row-end-2 flex items-end justify-center border-b-4 border-r-4 border-solid border-goldLines pb-2 text-2xl">
-            <div className="text-page-section relative flex h-full w-full flex-col items-center justify-end">
-              <div>
-                <p>CONTACT</p>
-              </div>
-            </div>
+            <div className="text-page-section relative flex h-full w-full flex-col items-center justify-end"></div>
           </div>
           <div className="col-start-2 col-end-13 grid border-b-4 border-solid border-goldLines "></div>
           <div className="z-20 col-start-1 col-end-1 row-start-2 row-end-10 border-r-4 border-solid border-goldLines"></div>
@@ -105,27 +40,27 @@ const PageTemplate = () => {
           {isInView ? (
             <>
               {/* CONTACT DETAILS */}
-              <motion.div className="col-start-2 col-end-8 row-start-2 row-end-10 grid overflow-hidden  px-[2rem] py-[2rem]">
+              <motion.div className="col-start-2 col-end-8 row-start-2 row-end-10 grid  px-[2rem] py-[2rem]">
                 <motion.div
                   className="flex flex-col gap-5 "
-                  variants={titleVariant}
+                  variants={contactsDetailsVariant}
                   initial="initial"
                   animate="animate"
                 >
                   <motion.div
                     className="flex flex-col gap-10 "
-                    variants={defaultVariant}
+                    variants={contactDefaultVariant}
                     initial="initial"
                     animate="animate"
                   >
                     <motion.div
                       className="service-title text-subtitle-color "
-                      variants={titleTextVariant}
+                      variants={contactTitleTextVariant}
                     >
                       CONTACT US
                     </motion.div>
                     <motion.div
-                      variants={titleTextVariant}
+                      variants={contactTitleTextVariant}
                       className="service-content text-subtitle-color"
                     >
                       Ready to bring your architectural vision to life? Reach
@@ -133,104 +68,83 @@ const PageTemplate = () => {
                       of experts.
                     </motion.div>
                   </motion.div>
-                  <div className="flex h-full flex-col justify-center gap-5">
-                    <div className="text-subtitle-color">
+                  {/* CONTACT INFO */}
+                  <div className="flex h-full flex-col justify-center gap-5 overflow-hidden ">
+                    {Contacts.map((contact, id) => {
+                      if (contact.id == 2) {
+                        return (
+                          <div className="text-subtitle-color" key={contact.id}>
+                            <motion.div
+                              className="text-contact-opacity text-contact-title"
+                              variants={contactTextVariant}
+                              transition={{ delay: titleDelay }}
+                            >
+                              {contact.title}
+                            </motion.div>
+                            <motion.div
+                              className="text-contact-detail"
+                              variants={contactTextVariant}
+                              transition={{ delay: detailDelay }}
+                            >
+                              {contact.numberOne}
+                            </motion.div>
+                            <motion.div
+                              className="text-contact-detail"
+                              variants={contactTextVariant}
+                              transition={{ delay: detailDelay }}
+                            >
+                              {contact.numberTwo}
+                            </motion.div>
+                          </div>
+                        );
+                      }
+                      return (
+                        <div className="text-subtitle-color" key={contact.id}>
+                          <div className="flex flex-col">
+                            <motion.div
+                              className="text-contact-opacity text-contact-title"
+                              variants={contactTextVariant}
+                            >
+                              {contact.title}
+                            </motion.div>
+                            <motion.div
+                              variants={contactTextVariant}
+                              className="text-contact-detail"
+                            >
+                              {contact.detail}
+                            </motion.div>
+                          </div>
+                        </div>
+                      );
+                    })}
+
+                    {/* SOCIAL MEDIA PAGE*/}
+                    <div className="text-service-description text-subtitle-color">
                       <div className="flex flex-col">
                         <motion.div
                           className="text-contact-opacity text-contact-title"
-                          variants={textVariant}
-                        >
-                          ARCHITECT
-                        </motion.div>
-                        <motion.div
-                          variants={textVariant}
-                          className="text-contact-detail"
-                        >
-                          Dave O. Candelario
-                        </motion.div>
-                      </div>
-                    </div>
-                    <div className="text-service-description text-subtitle-color">
-                      <div className="flex flex-col ">
-                        <motion.div
-                          className="text-contact-opacity text-contact-title"
-                          variants={textVariant}
+                          variants={contactTextVariant}
                           transition={{ delay: titleDelay }}
                         >
-                          CONTACTS
+                          FACEBOOK PAGE
                         </motion.div>
-                        <motion.div
-                          className="text-contact-detail"
-                          variants={textVariant}
-                          transition={{ delay: detailDelay }}
-                        >
-                          09777538014
-                        </motion.div>
-                        <motion.div
-                          className="text-contact-detail"
-                          variants={textVariant}
-                          transition={{ delay: detailDelay }}
-                        >
-                          09616397716
-                        </motion.div>
-                      </div>
-                    </div>
-                    <div className="text-service-description text-subtitle-color">
-                      <div className="flex flex-col">
-                        <motion.div
-                          className="text-contact-opacity text-contact-title"
-                          variants={textVariant}
-                          transition={{ delay: titleDelay }}
-                        >
-                          EMAIL
-                        </motion.div>
-                        <motion.div
-                          className="text-contact-detail"
-                          variants={textVariant}
-                          transition={{ delay: detailDelay }}
-                        >
-                          dav08veolarte@gmail.com
-                        </motion.div>
-                      </div>
-                    </div>
-                    <div className="text-service-description text-subtitle-color">
-                      <div className="flex flex-col ">
-                        <motion.div
-                          className="text-contact-opacity text-contact-title"
-                          variants={textVariant}
-                          transition={{ delay: titleDelay }}
-                        >
-                          LOCATION
-                        </motion.div>
-                        <motion.div
-                          className="text-contact-detail"
-                          variants={textVariant}
-                          transition={{ delay: detailDelay }}
-                        >
-                          Brgy. Sampaloc Bolinao Pangasinan
-                        </motion.div>
+                        <a href="https://facebook.com">
+                          <motion.div
+                            className="h-social-media flex w-full"
+                            variants={contactTextVariant}
+                            transition={{ delay: detailDelay }}
+                            style={{
+                              backgroundImage: `url("${Facebook}")`,
+                              backgroundSize: "contain",
+                              backgroundPosition: "left",
+                              backgroundRepeat: "no-repeat",
+                            }}
+                          ></motion.div>
+                        </a>
                       </div>
                     </div>
                   </div>
                 </motion.div>
-              </motion.div>
-              {/* FACEBOOK */}
-              <motion.div
-                variants={titleVariant}
-                initial="initial"
-                animate="animate"
-                className="relative z-40 col-span-2 col-start-6 row-span-2 row-start-7 flex h-full w-full place-items-center justify-center  py-16 3xl:py-10 "
-              >
-                <motion.div
-                  variants={titleTextVariant}
-                  className="relative h-full w-full"
-                  style={{
-                    backgroundImage: `url("${Facebook}")`,
-                    backgroundPosition: "center",
-                    backgroundSize: "contain",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                ></motion.div>
               </motion.div>
               {/* BACKGROUND IMAGE */}
               <motion.div
@@ -240,7 +154,7 @@ const PageTemplate = () => {
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
-                variants={primaryVariant}
+                variants={contactPrimaryVariant}
                 animate="animate"
                 initial="initial"
               >
@@ -305,25 +219,25 @@ const PageTemplate = () => {
               <motion.div className="z-10 col-span-5 col-start-2 row-span-4 row-start-1 grid overflow-hidden bg-primaryBackground bg-opacity-45">
                 <motion.div
                   className="grid grid-cols-6 grid-rows-4 items-center pr-4"
-                  variants={titleVariant}
+                  variants={contactsDetailsVariant}
                   initial="initial"
                   animate="animate"
                 >
                   {/* PAGE TITLE */}
                   <motion.div
-                    className="col-span-5 col-start-1 row-span-2 row-start-1 flex h-3/4 flex-col justify-center gap-5 "
-                    variants={defaultVariant}
+                    className="col-span-6 col-start-1 row-span-2 row-start-1 flex h-3/4 flex-col justify-center gap-5 "
+                    variants={contactDefaultVariant}
                     initial="initial"
                     animate="animate"
                   >
                     <motion.div
                       className="text-title text-subtitle-color "
-                      variants={titleTextVariant}
+                      variants={contactTitleTextVariant}
                     >
                       CONTACT US
                     </motion.div>
                     <motion.div
-                      variants={titleTextVariant}
+                      variants={contactTitleTextVariant}
                       className="text-subtitle-description text-subtitle-color mr-5 max-lg:text-sm"
                     >
                       Ready to bring your architectural vision to life? Reach
@@ -331,113 +245,81 @@ const PageTemplate = () => {
                       of experts.
                     </motion.div>
                   </motion.div>
-                  <div className="col-span-4 col-start-1 row-span-4 row-start-2 flex h-[80%] flex-col justify-center gap-5 ">
-                    {/* ARCHITECT */}
-                    <div className="text-subtitle-color">
-                      <div className="flex flex-col gap-1">
+                  {/* CONTACT INFO */}
+                  <div className="col-span-4 col-start-1 row-span-4 row-start-2 flex h-[80%] flex-col justify-end gap-5 ">
+                    {Contacts.map((contact, id) => {
+                      if (contact.id == 2) {
+                        return (
+                          <div className="flex flex-col" key={contact.id}>
+                            <motion.div
+                              className="text-contact-opacity text-contact-title"
+                              variants={contactTextVariant}
+                              transition={{ delay: titleDelay }}
+                            >
+                              {contact.title}
+                            </motion.div>
+                            <motion.div
+                              className="text-contact-detail"
+                              variants={contactTextVariant}
+                              transition={{ delay: detailDelay }}
+                            >
+                              {contact.numberOne}
+                            </motion.div>
+                            <motion.div
+                              className="text-contact-detail"
+                              variants={contactTextVariant}
+                              transition={{ delay: detailDelay }}
+                            >
+                              {contact.numberTwo}
+                            </motion.div>
+                          </div>
+                        );
+                      } else {
+                        return (
+                          <div className="text-subtitle-color" key={contact.id}>
+                            <div className="flex flex-col gap-1">
+                              <motion.div
+                                className="text-contact-opacity text-contact-title"
+                                variants={contactTextVariant}
+                              >
+                                {contact.title}
+                              </motion.div>
+                              <motion.div
+                                variants={contactTextVariant}
+                                className="text-contact-detail"
+                              >
+                                {contact.detail}
+                              </motion.div>
+                            </div>
+                          </div>
+                        );
+                      }
+                    })}
+                    {/* SOCIAL MEDIA PAGE */}
+                    <div className="text-subtitle-color relative ">
+                      <div className="relative flex h-full flex-col  gap-1">
                         <motion.div
-                          className="text-contact-opacity text-contact-title"
-                          variants={textVariant}
-                        >
-                          ARCHITECT
-                        </motion.div>
-                        <motion.div
-                          className="text-contact-detail"
-                          variants={textVariant}
-                        >
-                          {/* Dave O. Candelario */}
-                          XXXX-XXXXX-XXXXX
-                        </motion.div>
-                      </div>
-                    </div>
-                    {/* CONTACTS */}
-                    <div className=" text-subtitle-color">
-                      <div className="flex flex-col gap-1">
-                        <motion.div
-                          className="text-contact-opacity text-contact-title"
-                          variants={textVariant}
+                          className="text-contact-opacity text-contact-title flex"
+                          variants={contactTextVariant}
                           transition={{ delay: titleDelay }}
                         >
-                          CONTACTS
+                          FACEBOOK PAGE
                         </motion.div>
                         <motion.div
-                          className="text-contact-detail"
-                          variants={textVariant}
+                          className="h-social-media flex  w-full"
+                          variants={contactTextVariant}
                           transition={{ delay: detailDelay }}
-                        >
-                          XXXX-XXXXX-XXXXX
-                          {/* 09777538014 */}
-                        </motion.div>
-                        <motion.div
-                          className="text-contact-detail"
-                          variants={textVariant}
-                          transition={{ delay: detailDelay }}
-                        >
-                          XXXX-XXXXX-XXXXX
-                          {/* 09616397716 */}
-                        </motion.div>
-                      </div>
-                    </div>
-                    {/* EMAIL */}
-                    <div className=" text-subtitle-color">
-                      <div className="flex flex-col gap-1">
-                        <motion.div
-                          className="text-contact-opacity text-contact-title"
-                          variants={textVariant}
-                          transition={{ delay: titleDelay }}
-                        >
-                          EMAIL
-                        </motion.div>
-                        <motion.div
-                          className="text-contact-detail"
-                          variants={textVariant}
-                          transition={{ delay: detailDelay }}
-                        >
-                          XXXX-XXXXX-XXXXX
-                          {/* dav08veolarte@gmail.com */}
-                        </motion.div>
-                      </div>
-                    </div>
-                    {/* LOCATION */}
-                    <div className="text-subtitle-color">
-                      <div className="flex flex-col gap-1">
-                        <motion.div
-                          className="text-contact-opacity text-contact-title"
-                          variants={textVariant}
-                          transition={{ delay: titleDelay }}
-                        >
-                          LOCATION
-                        </motion.div>
-                        <motion.div
-                          className="text-contact-detail"
-                          variants={textVariant}
-                          transition={{ delay: detailDelay }}
-                        >
-                          XXXX-XXXXX-XXXXX
-                          {/* Brgy. Sampaloc Bolinao Pangasinan */}
-                        </motion.div>
+                          style={{
+                            backgroundImage: `url("${Facebook}")`,
+                            backgroundSize: "contain",
+                            backgroundPosition: "left",
+                            backgroundRepeat: "no-repeat",
+                          }}
+                        ></motion.div>
                       </div>
                     </div>
                   </div>
                 </motion.div>
-              </motion.div>
-              {/* FACEBOOK */}
-              <motion.div
-                variants={titleVariant}
-                initial="initial"
-                animate="animate"
-                className="relative z-10 col-span-2 col-start-5 row-start-4 flex h-full w-full place-items-center justify-center py-14 "
-              >
-                <motion.div
-                  className="relative h-full w-full "
-                  variants={titleTextVariant}
-                  style={{
-                    backgroundImage: `url("${Facebook}")`,
-                    backgroundSize: "contain",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                ></motion.div>
               </motion.div>
               {/* BACKGROUND IMAGE */}
               <motion.div
@@ -447,7 +329,7 @@ const PageTemplate = () => {
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
-                variants={primaryVariant}
+                variants={contactPrimaryVariant}
                 animate="animate"
                 initial="initial"
               >
@@ -473,7 +355,7 @@ const PageTemplate = () => {
                     style={{ originX: 1 }}
                   ></motion.div>
                 </div>
-              </motion.div>{" "}
+              </motion.div>
             </>
           ) : (
             <></>
@@ -491,8 +373,6 @@ const PageTemplate = () => {
                   backgroundPosition: "center",
                 }}
               ></div>
-
-              {/* <div className="flex w-full bg-blue-500 text-sm text-black"></div> */}
             </div>
           </div>
         </div>

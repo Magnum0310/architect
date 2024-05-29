@@ -98,7 +98,7 @@ function App() {
         <Carousel />
       </div>
       {/* CONTACT SECTION */}
-      <div className="h-screen text-white max-xs:relative" id="contact ">
+      <div className="h-screen text-white max-xs:relative" id="contact">
         <Contact />
       </div>
     </div>

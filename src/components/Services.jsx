@@ -12,7 +12,12 @@ const {
 
 const PageTemplate = () => {
   const divRef = useRef(null);
+  const mobileRef = useRef(null);
   const isInView = useInView(divRef, {
+    once: true,
+    margin: "0px 100px -300px 0px",
+  });
+  const mobileView = useInView(mobileRef, {
     once: true,
     margin: "0px 100px -300px 0px",
   });
@@ -66,18 +71,36 @@ const PageTemplate = () => {
         <div className="col-start-2 col-end-13 row-start-1 grid border-b-4 border-solid border-goldLines max-md:hidden "></div>
         <div className="z-20 col-start-1 col-end-2 row-start-1 row-end-10 border-r-4 border-solid border-goldLines max-md:hidden"></div>
 
-        <div className="relative z-20 grid h-full  max-md:col-span-5 max-md:col-start-2 max-md:row-span-4 max-md:row-start-1 max-md:h-3/4 max-md:place-items-center md:col-start-3 md:col-end-11 md:row-start-3 md:row-end-7">
-          <div className="relative flex flex-col gap-10 bg-primaryBackground bg-opacity-45 max-md:py-4 max-md:pl-2 max-md:pr-4 md:h-full md:w-full md:justify-evenly md:gap-12">
-            <div className="text-subtitle-color text-page-section-title relative max-md:text-left">
-              Discover our comprehensive range of services
-            </div>
-            <div className="text-subtitle-description-color text-page-section-content relative font-Fahkwang font-thin max-md:text-left md:ml-48 md:text-xl">
-              Discover our diverse expertise. From architectural design to
-              construction, our talented team brings creativity and innovation
-              to every project. Explore our areas of expertise and let us bring
-              your vision to life.
-            </div>
-          </div>
+        <div
+          className="relative z-20 grid h-full  max-md:col-span-5 max-md:col-start-2 max-md:row-span-4 max-md:row-start-1 max-md:h-3/4 max-md:place-items-center md:col-start-3 md:col-end-11 md:row-start-3 md:row-end-7"
+          ref={mobileRef}
+        >
+          {mobileView ? (
+            <motion.div
+              className="relative flex flex-col gap-10 bg-primaryBackground bg-opacity-45 max-md:py-4 max-md:pl-2 max-md:pr-4 md:h-full md:w-full md:justify-evenly md:gap-12"
+              variants={primaryVariant}
+              animate="animate"
+              initial="initial"
+            >
+              <motion.div
+                className="text-subtitle-color text-page-section-title relative max-md:text-left"
+                variants={titleVariant}
+              >
+                Discover our comprehensive range of services
+              </motion.div>
+              <motion.div
+                className="text-subtitle-description-color text-page-section-content relative font-Fahkwang font-thin max-md:text-left md:ml-48 md:text-xl"
+                variants={leftTextVariant}
+              >
+                Discover our diverse expertise. From architectural design to
+                construction, our talented team brings creativity and innovation
+                to every project. Explore our areas of expertise and let us
+                bring your vision to life.
+              </motion.div>
+            </motion.div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>
