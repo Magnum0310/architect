@@ -110,7 +110,7 @@ const PageTemplate = () => {
 
       {/* MOBILE */}
       <div
-        className="grid w-screen flex-col max-md:h-screen max-md:grid-cols-6 max-md:grid-rows-4 max-md:gap-0 md:hidden md:h-[100vh]"
+        className="grid flex-col max-md:h-screen max-md:w-screen max-md:grid-cols-6 max-md:grid-rows-4 max-md:gap-0 md:hidden md:h-[100vh]"
         ref={mobileRef}
       >
         <div className="relative z-30 border-r-4 border-solid border-goldLines max-md:col-start-1 max-md:col-end-2 max-md:row-span-4 max-md:row-start-1 max-md:w-1/2"></div>
@@ -127,7 +127,7 @@ const PageTemplate = () => {
             >
               <div className="relative flex h-full w-full flex-col justify-center gap-10 bg-primaryBackground bg-opacity-45 max-md:py-4 max-md:pl-2 max-md:pr-4">
                 <motion.div
-                  className="text-subtitle-color max-md:text-subtitle relative max-md:text-left"
+                  className="text-subtitle-color text-page-section-title relative max-md:text-left"
                   variants={titleVariant}
                 >
                   Where dreams Take Shape

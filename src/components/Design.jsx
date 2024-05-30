@@ -194,7 +194,7 @@ const ServicesPage = ({ track }) => {
           <div className=" absolute grid h-3/4 w-full grid-cols-6 grid-rows-6 bg-green-500 bg-opacity-0 md:hidden">
             {/* SERVICE TITLE */}
             <motion.div
-              className=" service-title col-span-6 col-start-2 flex items-end  justify-start"
+              className=" service-title col-span-6 col-start-2 flex items-end justify-start"
               style={{ y: 0 }}
             >
               <span className="text-title-color">{Details.design.title}</span>

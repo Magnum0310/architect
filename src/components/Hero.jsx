@@ -1,15 +1,17 @@
 import Image from "../components/constants/Images";
 import { motion } from "framer-motion";
 import Variants from "../components/constants/Variants";
+import ScrollTo from "./constants/ScrollTo";
 
 const { heroTitle, heroSubtitle, heroLogo } = Variants;
+const { toService } = ScrollTo;
 
 const primaryVariant = {
   initial: { opacity: 1 },
   animate: {
     opacity: 1,
     transition: {
-      delayChildren: 0.5,
+      delayChildren: 0,
       staggerChildren: 0.15,
     },
   },
@@ -129,7 +131,6 @@ const PageTemplate = () => {
         initial="initial"
       >
         <div className="relative ml-10 grid h-full w-full grid-cols-6 grid-rows-5">
-          {/* <div className="text-title relative col-span-6 col-start-1 row-span-4 row-start-1 h-full w-full flex-col justify-center"> */}
           <motion.div
             className="text-title relative col-span-6 col-start-1 row-span-2 row-start-1 flex h-full w-full items-end tracking-wide text-white"
             variants={textVariant}
@@ -147,17 +148,17 @@ const PageTemplate = () => {
             variants={textVariant}
           >
             <div className="relative flex h-1/2 w-full flex-col justify-center text-lg ">
-              <motion.a
+              <motion.button
                 className="relative flex h-full w-max items-center rounded-full bg-white px-5 tracking-wider hover:cursor-pointer hover:text-goldLines 
                 "
-                href="#service"
+                onClick={() => toService()}
                 whileHover={{
                   scale: 1.01,
                   y: -0.5,
                 }}
               >
                 EXPLORE OUR SERVICES
-              </motion.a>
+              </motion.button>
             </div>
           </motion.div>
         </div>
@@ -171,7 +172,6 @@ const PageTemplate = () => {
         animate="animate"
         initial="initial"
       ></motion.div>
-      {/* <div className="col-start-1 col-end-2 row-start-1 row-end-2 flex items-end justify-center border-r-4 border-solid border-goldLines md:hidden"></div> */}
       {/* GRADIENT BACKGROUND */}
       <div className="z-10 col-span-6 col-start-1 row-span-5 row-start-1 h-full w-full md:hidden">
         <div className="relative h-full w-full">
@@ -238,7 +238,7 @@ const PageTemplate = () => {
             animate="animate"
             initial="initial"
           >
-            <div className="relative mb-10 h-[5%] w-full bg-goldLines"></div>
+            <div className="relative mb-10 h-[3%] w-full bg-goldLines"></div>
           </motion.div>
         </motion.div>
       </div>

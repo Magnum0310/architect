@@ -2,8 +2,10 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "../components/constants/Images";
 import Facebook from "../assets/facebook.svg";
+import Arrow from "../assets/arrow.svg";
 import Contacts from "../components/constants/Contacts";
 import Variants from "../components/constants/Variants";
+import ScrollTo from "./constants/ScrollTo";
 
 const {
   contactPrimaryVariant,
@@ -14,13 +16,40 @@ const {
   contactTextVariant,
 } = Variants;
 
+const { scrollToTop } = ScrollTo;
+
 const titleDelay = 0;
 const detailDelay = 0.5;
+
+const buttonVariant = {
+  initial: { y: 70, opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "tween",
+      ease: "anticipate",
+      duration: 0.7,
+    },
+  },
+};
+
+const arrowVariant = {
+  initial: { y: 120, opacity: 0 },
+  animate: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "tween",
+      ease: "anticipate",
+      duration: 1,
+    },
+  },
+};
 
 const PageTemplate = () => {
   const divRef = useRef(null);
   const isInView = useInView(divRef, {
-    // margin: "0px 100px -300px 0px",
     margin: "0px 0px 0px 0px",
   });
   return (
@@ -70,7 +99,7 @@ const PageTemplate = () => {
                   </motion.div>
                   {/* CONTACT INFO */}
                   <div className="flex h-full flex-col justify-center gap-5 overflow-hidden ">
-                    {Contacts.map((contact, id) => {
+                    {Contacts.map((contact) => {
                       if (contact.id == 2) {
                         return (
                           <div className="text-subtitle-color" key={contact.id}>
@@ -128,7 +157,7 @@ const PageTemplate = () => {
                         >
                           FACEBOOK PAGE
                         </motion.div>
-                        <a href="https://facebook.com">
+                        <a href="https://www.facebook.com/people/DOC-Architectural-Services/61551782986150/">
                           <motion.div
                             className="h-social-media flex w-full"
                             variants={contactTextVariant}
@@ -179,6 +208,34 @@ const PageTemplate = () => {
                     variants={shapeVariant}
                     style={{ originX: 1 }}
                   ></motion.div>
+                  <div className="col-span-2 col-start-3 row-span-2 row-start-5 flex items-center justify-center ">
+                    <a
+                      href="home"
+                      className="relative flex h-3/4 w-1/2 items-center justify-center overflow-y-hidden"
+                    >
+                      <motion.button
+                        className="flex h-[90%] w-3/4 flex-col items-center justify-center text-black 
+                      "
+                        onClick={() => scrollToTop()}
+                      >
+                        <motion.div
+                          className="h-3/4 w-3/4 rounded-full border-primaryBackground  "
+                          variants={arrowVariant}
+                          style={{
+                            backgroundImage: `url("${Arrow}")`,
+                            backgroundSize: "contain",
+                            backgroundPosition: "center",
+                            backgroundRepeat: "no-repeat",
+                            rotate: "-90deg",
+                            scale: ".7",
+                          }}
+                        ></motion.div>
+                        <motion.span variants={buttonVariant}>
+                          Back to top
+                        </motion.span>
+                      </motion.button>
+                    </a>
+                  </div>
                 </div>
               </motion.div>
             </>
@@ -238,7 +295,7 @@ const PageTemplate = () => {
                     </motion.div>
                     <motion.div
                       variants={contactTitleTextVariant}
-                      className="text-subtitle-description text-subtitle-color mr-5 max-lg:text-sm"
+                      className="text-subtitle-description text-subtitle-color  xs:mr-[10rem] "
                     >
                       Ready to bring your architectural vision to life? Reach
                       out to us today to schedule a consultation with our team
@@ -305,7 +362,7 @@ const PageTemplate = () => {
                         >
                           FACEBOOK PAGE
                         </motion.div>
-                        <a href="https://facebook.com">
+                        <a href="https://www.facebook.com/people/DOC-Architectural-Services/61551782986150/">
                           <motion.div
                             className="h-social-media flex  w-full"
                             variants={contactTextVariant}
@@ -356,6 +413,35 @@ const PageTemplate = () => {
                     variants={shapeVariant}
                     style={{ originX: 1 }}
                   ></motion.div>
+                  <div className="z-10 col-span-2 col-start-4 row-span-2 row-start-5 flex items-center justify-center ">
+                    <a
+                      href="home"
+                      className="relative flex h-3/4 w-3/4 items-center justify-center overflow-y-hidden"
+                    >
+                      <motion.button
+                        className="flex h-[90%] w-3/4 flex-col items-center justify-center text-white 
+                      "
+                        onClick={() => scrollToTop()}
+                      >
+                        <motion.div
+                          className="h-1/2 w-full"
+                          variants={arrowVariant}
+                          style={{
+                            backgroundImage: `url("${Arrow}")`,
+                            backgroundSize: "contain",
+                            backgroundPosition: "center",
+                            backgroundRepeat: "no-repeat",
+                            rotate: "-90deg",
+                            scale: ".5",
+                          }}
+                        ></motion.div>
+
+                        <motion.div className="" variants={buttonVariant}>
+                          Back to top
+                        </motion.div>
+                      </motion.button>
+                    </a>
+                  </div>
                 </div>
               </motion.div>
             </>

@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import About from "./components/AboutUs";
 import Services from "./components/Services";
@@ -12,17 +11,15 @@ import OtherServices from "./components/Other Services";
 import Carousel from "./components/Carousel";
 import Permit from "./components/Permit";
 import Contact from "./components/ContactUs";
-// import TEST from "./components/Hero";
 import PageTracker from "./components/PageTracker";
-
+import ScrollTo from "./components/constants/ScrollTo";
 import "./App.css";
 import Lenis from "lenis";
-import { useScroll } from "framer-motion";
 
 function App() {
   const track = useRef(null);
-  const track1 = useRef(null);
-  const track2 = useRef(null);
+
+  const { toAbout, toService, toContact } = ScrollTo;
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -35,34 +32,34 @@ function App() {
   }, []);
 
   return (
-    <div className="relative bg-primaryBackground font-Coda">
+    <div className="relative  bg-primaryBackground font-Coda">
       {/* NAV */}
       <div className="absolute z-20 flex w-full pt-5 max-md:hidden">
         <div className="h-full w-full ">
           <div className="grid h-full w-full grid-cols-6 text-white">
-            <a
+            <button
               className="col-start-4 col-end-5 flex items-end justify-start hover:text-goldLines"
-              href="#about"
+              onClick={() => toAbout()}
             >
               ABOUT US
-            </a>
-            <a
+            </button>
+            <button
               className="col-start-5 col-end-6 flex items-end justify-start hover:text-goldLines"
-              href="#service"
+              onClick={() => toService()}
             >
               SERVICES
-            </a>
-            <a
+            </button>
+            <button
               className="col-start-6 col-end-7 flex items-end justify-start hover:text-goldLines"
-              href="#contact"
+              onClick={() => toContact()}
             >
               CONTACT US
-            </a>
+            </button>
           </div>
         </div>
       </div>
       {/* HERO SECTION */}
-      <div className="">
+      <div className="" id="home">
         <Hero />
       </div>
       {/* ABOUT SECTION */}
@@ -70,7 +67,7 @@ function App() {
         <About />
       </div>
       {/* SERVICES SECTION */}
-      <div className="h-[80vh] max-md:h-[50vh]" id="service">
+      <div className="h-[90vh] max-md:h-[50vh]" id="service">
         <Services />
       </div>
       <div className="max-md:h-[550vh] md:min-h-[1300vh]" ref={track}>
