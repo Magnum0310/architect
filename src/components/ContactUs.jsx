@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "../components/constants/Images";
-import Facebook from "../assets/Facebook.svg";
+import Facebook from "../assets/facebook.svg";
 import Contacts from "../components/constants/Contacts";
 import Variants from "../components/constants/Variants";
 
