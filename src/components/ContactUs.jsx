@@ -47,6 +47,14 @@ const arrowVariant = {
   },
 };
 
+const fontVariant = {
+  initial: { color: "#FFFFFF" },
+  animate: {
+    color: "#DDA302",
+    transition: { duration: 1, ease: "easeInOut" },
+  },
+};
+
 const PageTemplate = () => {
   const divRef = useRef(null);
   const isInView = useInView(divRef, {
@@ -69,15 +77,15 @@ const PageTemplate = () => {
           {isInView ? (
             <>
               {/* CONTACT DETAILS */}
-              <motion.div className="col-start-2 col-end-8 row-start-2 row-end-10 grid  px-[2rem] py-[2rem]">
+              <motion.div className="col-start-2 col-end-8 row-start-2 row-end-10 grid px-[2rem] py-[2rem]">
                 <motion.div
-                  className="flex flex-col gap-5 "
+                  className="flex flex-col gap-5"
                   variants={contactsDetailsVariant}
                   initial="initial"
                   animate="animate"
                 >
                   <motion.div
-                    className="flex flex-col gap-10 "
+                    className="flex flex-col gap-5 "
                     variants={contactDefaultVariant}
                     initial="initial"
                     animate="animate"
@@ -96,9 +104,18 @@ const PageTemplate = () => {
                       out to us today to schedule a consultation with our team
                       of experts.
                     </motion.div>
+                    <motion.div
+                      variants={contactTitleTextVariant}
+                      className="text-subtitle-color  text-xl max-xs:text-base"
+                    >
+                      GIVE YOUR{" "}
+                      <motion.span variants={fontVariant}>DREAMS</motion.span> A
+                      SHAPE OF{" "}
+                      <motion.span variants={fontVariant}>REALITY</motion.span>
+                    </motion.div>
                   </motion.div>
                   {/* CONTACT INFO */}
-                  <div className="flex h-full flex-col justify-center gap-5 overflow-hidden ">
+                  <div className="flex h-full flex-col justify-center gap-4 overflow-hidden ">
                     {Contacts.map((contact) => {
                       if (contact.id == 2) {
                         return (
@@ -282,7 +299,7 @@ const PageTemplate = () => {
                 >
                   {/* PAGE TITLE */}
                   <motion.div
-                    className="col-span-6 col-start-1 row-span-2 row-start-1 flex h-3/4 flex-col justify-center gap-5 "
+                    className="col-span-6 col-start-1 row-span-2 row-start-1 flex h-3/4 flex-col justify-center gap-5"
                     variants={contactDefaultVariant}
                     initial="initial"
                     animate="animate"
@@ -301,9 +318,18 @@ const PageTemplate = () => {
                       out to us today to schedule a consultation with our team
                       of experts.
                     </motion.div>
+                    <motion.div
+                      variants={contactTitleTextVariant}
+                      className="text-subtitle-color text-xl max-xs:text-base xs:mr-[10rem]"
+                    >
+                      GIVE YOUR{" "}
+                      <motion.span variants={fontVariant}>DREAMS</motion.span> A
+                      SHAPE OF{" "}
+                      <motion.span variants={fontVariant}>REALITY</motion.span>
+                    </motion.div>
                   </motion.div>
                   {/* CONTACT INFO */}
-                  <div className="col-span-4 col-start-1 row-span-4 row-start-2 flex h-[80%] flex-col justify-end gap-5 ">
+                  <div className="col-span-4 col-start-1 row-span-4 row-start-2 flex h-[80%] flex-col justify-end gap-5">
                     {Contacts.map((contact, id) => {
                       if (contact.id == 2) {
                         return (
